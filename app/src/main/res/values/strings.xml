@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Club deportivo</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="btnLogin">Ingresar</string>
+    <string name="logo">Descripción de la imagen</string>
+    <string name="username_hint">Usuario</string>
+    <string name="password_hint">Contraseña</string>
+</resources>
