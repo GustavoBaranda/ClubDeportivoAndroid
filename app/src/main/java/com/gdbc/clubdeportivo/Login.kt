@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +32,7 @@ class Login : AppCompatActivity() {
             if (username == "Gustavo" && password == "1234") {
                 val intent = Intent(this, PanelPrincipal::class.java)
                 startActivity(intent)
+                finish() // Cierra la actividad de login para que no se pueda volver con el botón atrás
             } else {
                 Toast.makeText(this, "Usuario y/o Contraseña invalida", Toast.LENGTH_SHORT).show()
             }

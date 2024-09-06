@@ -26,4 +26,5 @@
     <string name="finalizar_inscripcion">Finalizar Inscripcion</string>
     <string name="listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="borrar_postulante">Borrar Postulante</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
 </resources>
