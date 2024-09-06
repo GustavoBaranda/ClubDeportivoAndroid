@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo personalizado para los elementos del menú -->
+    <style name="MenuItemStyle">
+        <item name="android:background">#FF0000</item> <!-- Color de fondo -->
+        <item name="android:textColor">#FFFFFF</item> <!-- Color del texto -->
+        <item name="android:textSize">18sp</item> <!-- Tamaño de la fuente -->
+    </style>
+</resources>

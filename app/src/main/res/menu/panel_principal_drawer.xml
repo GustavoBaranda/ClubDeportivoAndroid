@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ingresar_cliente"
+            android:title="@string/menu_inscripcion_cliente"/>
+
+        <item
+            android:id="@+id/nav_finalizar_inscripcion"
+            android:title="@string/menu_finalizar_inscripcion"/>
+        <item
+            android:id="@+id/nav_borrar_postulante"
+            android:title="@string/menu_borrar_postulante" />
+        <item
+            android:id="@+id/nav_incripcion_de_actividades"
+            android:title="@string/menu_Incripcion_de_actividades" />
+        <item
+            android:id="@+id/nav_listar_cuotas_vencidas"
+            android:title="@string/menu_listar_cuotas_vencidas" />
+        <item
+            android:id="@+id/nav_abonar"
+            android:title="@string/menu_Abonar" />
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/menu_home" />
+    </group>
+</menu>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.gdbc.clubdeportivo.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_ingresar_cliente"
+        android:name="com.gdbc.clubdeportivo.ui.ingresarcliente.IngresarClienteFragment"
+        android:label="@string/menu_inscripcion_cliente"
+        tools:layout="@layout/fragment_ingresar_cliente" />
+
+    <fragment
+        android:id="@+id/nav_finalizar_inscripcion"
+        android:name="com.gdbc.clubdeportivo.ui.finalizarinscripcion.FinalizarInscripcionFragment"
+        android:label="@string/menu_finalizar_inscripcion"
+        tools:layout="@layout/fragment_finalizar_inscripcion" />
+    <fragment
+        android:id="@+id/nav_borrar_postulante"
+        android:name="com.gdbc.clubdeportivo.ui.borrarpostulante.BorrarPostulanteFragment"
+        android:label="@string/menu_borrar_postulante"
+        tools:layout="@layout/fragment_borrar_postulante" />
+    <fragment
+        android:id="@+id/nav_incripcion_de_actividades"
+        android:name="com.gdbc.clubdeportivo.ui.inscripciondeactividades.IncripcionDeActividadesFragment"
+        android:label="@string/menu_Incripcion_de_actividades"
+        tools:layout="@layout/fragment_incripcion_de_actividades" />
+    <fragment
+        android:id="@+id/nav_listar_cuotas_vencidas"
+        android:name="com.gdbc.clubdeportivo.ui.listarcuotasvencidas.ListarCuotasVencidasFragment"
+        android:label="@string/menu_listar_cuotas_vencidas"
+        tools:layout="@layout/fragment_listar_cuotas_vencidas" />
+    <fragment
+        android:id="@+id/nav_abonar"
+        android:name="com.gdbc.clubdeportivo.ui.abonar.AbonarFragment"
+        android:label="@string/menu_Abonar"
+        tools:layout="@layout/fragment_abonar" />
+
+</navigation>
