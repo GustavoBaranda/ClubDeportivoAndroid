@@ -6,20 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".ui.inscripciondeactividades.IncripcionDeActividadesFragment">
 
-    <TextView
-        android:id="@+id/text_inscripcion_de_actividades"
+   
+      <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/menu_Incripcion_de_actividades"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginBottom="112dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="0dp">
+
+        <EditText
+            style="@style/editText"
+            android:autofillHints="DNI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            style="@style/marginRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                style="@style/marginRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Socio" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Socio" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            style="@style/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/seleccion_de_actividades" />
+
+        <Spinner
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:entries="@array/my_array" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/inscribirActividad"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/button"
+
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

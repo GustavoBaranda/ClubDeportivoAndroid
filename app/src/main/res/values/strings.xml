@@ -12,7 +12,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="inscribirActividad">Inscribir Actividad</string>
     <string name="menu_home">¿Quienes somos?</string>
     <string name="menu_inscripcion_cliente">Ingresar Cliente</string>
     <string name="menu_finalizar_inscripcion">Finalizar Inscripción</string>
@@ -27,4 +27,12 @@
     <string name="listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="borrar_postulante">Borrar Postulante</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="seleccion_de_actividades">Seleccion de Actividades</string>
+
+
+    <string-array name="my_array">
+        <item>Opción 1</item>
+        <item>Opción 2</item>
+        <item>Opción 3</item>
+    </string-array>
 </resources>
