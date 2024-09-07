@@ -28,10 +28,10 @@ class FinalizarInscripcionFragment : Fragment() {
         _binding = FragmentFinalizarInscripcionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textFinalizarinscripcion
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textFinalizarinscripcion
+//        slideshowViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

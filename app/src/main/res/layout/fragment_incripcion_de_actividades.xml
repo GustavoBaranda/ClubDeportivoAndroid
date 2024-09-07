@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/inscribir_actividad"
             style="@style/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,14 +31,13 @@
         <EditText
             android:id="@+id/editTextDNI"
             style="@style/editText"
-            android:autofillHints="DNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
             android:layout_marginTop="32dp"
+            android:autofillHints="DNI"
             android:hint="@string/dni_hint"
-            android:contentDescription="@string/descripcion_dni"
-            tools:ignore="ContentDescription" />
+            android:padding="12dp"
+             />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -78,9 +77,10 @@
             android:id="@+id/spinnerActividades"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:padding="12dp"
             android:background="@drawable/rounded_corner"
-            android:entries="@array/my_array" />
+            android:entries="@array/arrayActividades"
+            android:padding="12dp"
+            android:spinnerMode="dropdown" />
 
         <Button
             android:id="@+id/button"

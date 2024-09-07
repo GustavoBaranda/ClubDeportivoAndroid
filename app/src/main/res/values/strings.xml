@@ -48,13 +48,21 @@
     <string name="descripcion_button">Descripción del botón para inscribir</string>
     <string name="inscribir_actividad">Inscribir Actividad</string>
     <string name="descripcion_dni">Campo para ingresar DNI</string>
-
+    <string name="titleFinalizarRegistroInscripcion">Finalizar Registro de Inscripción</string>
+    <string name="metodo_de_pago">Método de pago</string>
     <string name="incribir_button">Inscribir</string>
+    <string name="radioTarjeta">Tarjeta</string>
+    <string name="radioEfectivo">Efectivo</string>
+    <string name="stringActividades">Seleccioná la actividad</string>
+    <string name="btnPagar">PAGAR</string>
+    <string name="btnMenuAnterior">Menú Anterior</string>
 
 
-    <string-array name="my_array">
-        <item>Opción 1</item>
-        <item>Opción 2</item>
-        <item>Opción 3</item>
+    <string-array name="arrayActividades">
+        <item>Zumba</item>
+        <item>Musculación</item>
+        <item>Gimnasia</item>
+        <item>Ping Pong</item>
     </string-array>
+
 </resources>
