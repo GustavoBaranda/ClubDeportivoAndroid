@@ -56,6 +56,12 @@
     <string name="stringActividades">Seleccioná la actividad</string>
     <string name="btnPagar">PAGAR</string>
     <string name="btnMenuAnterior">Menú Anterior</string>
+    <string name="dniAbonar">DNI</string>
+    <string name="m_todo_de_pago">Método de Pago</string>
+    <string name="efectivo">Efectivo</string>
+    <string name="tarjeta">Tarjeta</string>
+    <string name="selecci_n_de_actividades">Selección de Actividades</string>
+    <string name="pagarBtn">Pagar</string>
     <string-array name="arrayCuotas">
         <item>1 Cuota</item>
         <item>3 Cuota</item>
