@@ -56,7 +56,11 @@
     <string name="stringActividades">Seleccioná la actividad</string>
     <string name="btnPagar">PAGAR</string>
     <string name="btnMenuAnterior">Menú Anterior</string>
-
+    <string-array name="arrayCuotas">
+        <item>1 Cuota</item>
+        <item>3 Cuota</item>
+        <item>6 Cuota</item>
+    </string-array>
 
     <string-array name="arrayActividades">
         <item>Zumba</item>
