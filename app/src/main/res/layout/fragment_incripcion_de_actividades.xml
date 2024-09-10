@@ -40,27 +40,28 @@
              />
 
         <RadioGroup
-            android:layout_width="wrap_content"
+            android:layout_width="316dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radioSocio"
                 style="@style/marginRadioBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/radioSocio"
                 android:text="@string/socio"
-                android:textSize="20sp"
-                android:contentDescription="@string/radioSocio" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/radioNoSocio"
                 style="@style/marginRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/radioNoSocio"
                 android:text="@string/no_socio"
-                android:contentDescription="@string/radioNoSocio" />
+                android:textSize="20sp" />
         </RadioGroup>
 
         <TextView
