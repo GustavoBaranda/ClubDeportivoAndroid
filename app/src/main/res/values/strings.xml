@@ -56,6 +56,9 @@
     <string name="stringActividades">Seleccioná la actividad</string>
     <string name="btnPagar">PAGAR</string>
     <string name="btnMenuAnterior">Menú Anterior</string>
+<string name="titulo_morosos">"Listado de Morosos"</string>
+    <string name="buscar_moroso">"Buscar por nombre o Dni"</string>
+    <string name="volver">Volver</string>
     <string name="dniAbonar">DNI</string>
     <string name="m_todo_de_pago">Método de Pago</string>
     <string name="efectivo">Efectivo</string>
