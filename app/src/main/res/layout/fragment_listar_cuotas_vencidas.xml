@@ -7,9 +7,8 @@
     android:padding="16dp"
     tools:context=".ui.listarcuotasvencidas.ListarCuotasVencidasFragment">
 
-
     <TextView
-        android:id="@+id/textViewTitulo"
+        android:id="@+id/tvTitleDefaulter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -22,51 +21,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
-        android:id="@+id/search_defaulter"
+        android:id="@+id/srcDefaulter"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:queryBackground="@android:color/transparent"
         android:queryHint="@string/buscar_moroso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDefaulter" />
 
-    <!-- Contenedor de la lista mock -->
-    <LinearLayout
-        android:id="@+id/linearLayoutList"
-        android:layout_width="330dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDefaulter"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/search_defaulter"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="35dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/backButton"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/srcDefaulter" />
 
-<!--    Implementar listaDinamica con recyclerview-->
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="18dp"-->
-<!--        android:scrollbars="vertical"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/buttonPagar"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/search_defaulter" />-->
-
-       <Button
-        android:id="@+id/backButton"
+    <Button
+        android:id="@+id/btnBack"
         style="@style/button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_goneMarginTop="30dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
