@@ -1,7 +1,6 @@
 package com.gdbc.clubdeportivo.ui.abonar
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,14 +27,11 @@ class AbonarFragment : Fragment() {
 
         dni = arguments?.getString("dni").toString()
         abonarViewModel.setDni(dni)
-        Log.i("prueba", dni)
 
         // Enlazar el LiveData con el TextView
         abonarViewModel.text.observe(viewLifecycleOwner) { newText ->
-            // Aquí actualizamos el TextView cuando cambia el valor del LiveData
             binding.textAbonar.text = newText
         }
-
         return root
     }
 
