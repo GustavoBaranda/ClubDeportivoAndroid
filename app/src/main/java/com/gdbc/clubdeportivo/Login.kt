@@ -29,10 +29,10 @@ class Login : AppCompatActivity() {
             val username = userLogin.text.toString()
             val password = passwordLogin.text.toString()
 
-            if (username == "Gustavo" && password == "1234") {
+            if (username == "admin" && password == "admin") {
                 val intent = Intent(this, PanelPrincipal::class.java)
                 startActivity(intent)
-                finish() // Cierra la actividad de login para que no se pueda volver con el botón atrás
+                finish() //
             } else {
                 Toast.makeText(this, "Usuario y/o Contraseña invalida", Toast.LENGTH_SHORT).show()
             }

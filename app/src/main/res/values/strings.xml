@@ -16,7 +16,7 @@
     <string name="menu_home">¿Quienes somos?</string>
     <string name="menu_inscripcion_cliente">Ingresar Cliente</string>
     <string name="menu_finalizar_inscripcion">Finalizar Inscripción</string>
-    <string name="menu_borrar_postulante">Borrar Postulante</string>
+    <string name="menu_borrar_postulante">Postulantes borrados</string>
     <string name="menu_Incripcion_de_actividades">Inscripcion de Actividades</string>
     <string name="menu_listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="menu_Abonar">Abonar</string>
