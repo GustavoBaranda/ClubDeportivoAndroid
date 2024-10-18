@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,18 +31,34 @@ class ListarCuotasVencidasFragment : Fragment() {
     ): View {
         _binding = FragmentListarCuotasVencidasBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         val dbHelper = BDatos(requireContext())
         morosoRepository = MorosoRepository(dbHelper)
+        initUI()
 
-        // Configurar el SearchView
+        return root
+    }
+
+    private fun initUI() {
+        val searchView = binding.srcDefaulter
+        val plate = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
+        plate.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        binding.srcDefaulter.queryHint = "Buscar por nombre..."
+
+
         binding.srcDefaulter.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 morosoAdapter.filter(newText)
+
+                if (newText.isNullOrEmpty()) {
+                    binding.srcDefaulter.setQueryHint("Buscar por nombre...")
+                } else {
+                    binding.srcDefaulter.setQueryHint("")
+                }
                 return true
             }
         })
@@ -50,8 +66,6 @@ class ListarCuotasVencidasFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.nav_home)
         }
-
-        return root
     }
 
     override fun onResume() {

@@ -12,7 +12,7 @@ import com.gdbc.clubdeportivo.data.model.Cliente
 
 class MorosoAdapter(
     private val morosos: List<Cliente>,
-    private val onClick:(String) -> Unit
+    private val onClick: (String) -> Unit
 ) : RecyclerView.Adapter<MorosoAdapter.MorosoViewHolder>() {
 
     private var morososFiltrados = morosos.toMutableList()
@@ -24,7 +24,7 @@ class MorosoAdapter(
 
         fun bind(cliente: Cliente) {
             "${cliente.nombre} ${cliente.apellido}".also { tvDefaulter.text = it }
-            tvDNI.text = cliente.dni
+            "DNI: ${cliente.dni}".also { tvDNI.text = it }
             btnPay.setOnClickListener {
                 onClick(cliente.dni)
             }

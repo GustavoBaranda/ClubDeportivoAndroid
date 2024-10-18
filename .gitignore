@@ -1,15 +1,73 @@
-*.iml
-.gradle
+# Directorios y archivos de compilación
+/build/
+/out/
+
+# Archivos de configuración específicos del entorno
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+
+# Ignorar la totalidad de .idea excepto archivos esenciales
+.idea/*
+!.idea/vcs.xml
+
+# Excluir configuraciones locales innecesarias de .idea
+.idea/misc.xml
+.idea/modules.xml
+.idea/compiler.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/libraries/
+.idea/caches/
+.idea/codeStyles/
+.idea/assetWizardSettings.xml
+
+# Archivos de cache y temporales de Gradle y compilación
+/.gradle/
+/**/build/
+
+# Archivos del sistema operativo
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+Thumbs.db
+
+# Archivos de compilación de Android
+*.apk
+*.ap_
+*.aab
+
+# Archivos relacionados con empaquetado e instalación
+*.jar
+*.war
+*.ear
+
+# Archivos temporales generados por el IDE
+*.log
+*.class
+*.swp
+
+# Carpetas de test y reportes
+/test/
+**/test-results/
+**/test-output/
+**/reports/
+
+# Caché de Android y NDK
+/.android/
+/.cxx/
+
+# Archivos del emulador de Android
+*.hprof
+
+# Archivos de configuración de distribución
+/captures/
+/.externalNativeBuild/
+
+# Archivos relacionados con JetBrains (IDE)
+.idea/codeStyles/Project.xml
+.idea/codeStyles/codeStyleConfig.xml
+
+# SDKs descargados por Gradle Wrapper
+.gradle/
+/gradle/wrapper/gradle-wrapper.properties
+
+# Archivos relacionados con Firebase
+google-services.json

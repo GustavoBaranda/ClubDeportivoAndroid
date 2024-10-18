@@ -56,8 +56,7 @@
     <string name="stringActividades">Seleccioná la actividad</string>
     <string name="btnPagar">PAGAR</string>
     <string name="btnMenuAnterior">Menú Anterior</string>
-<string name="titulo_morosos">"Listado de Morosos"</string>
-    <string name="buscar_moroso">"Buscar por nombre"</string>
+    <string name="titulo_morosos">"Listado de Morosos"</string>
     <string name="volver">Volver</string>
 
     <string-array name="arrayActividades">
