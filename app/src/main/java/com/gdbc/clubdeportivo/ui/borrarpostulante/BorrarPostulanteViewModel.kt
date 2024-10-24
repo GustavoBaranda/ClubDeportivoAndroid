@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class BorrarPostulanteViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Borrar Postulante"
+        value = "Postulantes borrados"
     }
     val text: LiveData<String> = _text
 }
