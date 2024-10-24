@@ -10,6 +10,6 @@ class AbonarViewModel : ViewModel() {
     val text: LiveData<String> = _text
 
     fun setDni(dni: String) {
-        _text.value = "Abonar al cliente con DNI: $dni"
+        _text.value = dni
     }
 }

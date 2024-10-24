@@ -28,13 +28,12 @@ class AbonarFragment : Fragment() {
         abonarViewModel = ViewModelProvider(this)[AbonarViewModel::class.java]
 
         idCliente = arguments?.getInt("idCliente")!!
-        dni = arguments?.getString("dni").toString()
+        dni = arguments?.getString("dni") ?: ""
         abonarViewModel.setDni(dni)
 
-        // Enlazar el LiveData con el TextView
-        //abonarViewModel.text.observe(viewLifecycleOwner) { newText ->
-          //  binding.textAbonar.text = newText
-       // }
+        abonarViewModel.text.observe(viewLifecycleOwner) { newText ->
+            binding.tvDNI.setText(newText)
+        }
         return root
     }
 
