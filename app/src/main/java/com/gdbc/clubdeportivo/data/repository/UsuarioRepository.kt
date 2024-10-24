@@ -75,5 +75,5 @@ class UsuarioRepository(dbHelper:BDatos) {
 				 cursor?.close()
 				 db.close()
 			}
-	 }
+
 }
