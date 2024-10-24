@@ -1,9 +1,13 @@
 package com.gdbc.clubdeportivo.data.repository
 
+import android.content.ContentValues
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Moroso
+import com.gdbc.clubdeportivo.data.model.Pago
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
-class MorosoRepository(private val dbHelper: BDatos) {
+class MorosoRepository(private val dbHelper: BDatos, private val pagoRepository: PagoRepository) {
 
     fun listarMorosos(): MutableList<Moroso> {
         val db = dbHelper.readableDatabase
@@ -32,4 +36,22 @@ class MorosoRepository(private val dbHelper: BDatos) {
         }
         return list
     }
+
+	 fun agregarMoroso(idCliente:Int):Boolean {
+			val db = dbHelper.writableDatabase
+			val contenedor = ContentValues()
+			contenedor.put("id_cliente",idCliente)
+			val response = db.insert("Moroso",null,contenedor)
+			return response != -1L
+	 }
+
+	 fun agregarNuevosMorosos():List<Moroso>? {
+				val pagos = pagoRepository.pruebaBuscarUltimoPagoPorCliente() ?: return null
+				val nuevosMorosos = mutableListOf<Pago>()
+				pagos.forEach{p ->
+					 if(ChronoUnit.DAYS.between(p.fechaPago,LocalDate.now()) > 30) nuevosMorosos.add(p)
+				}
+			nuevosMorosos.forEach{p -> agregarMoroso(p.idCliente)}
+			return listarMorosos()
+	 }
 }
