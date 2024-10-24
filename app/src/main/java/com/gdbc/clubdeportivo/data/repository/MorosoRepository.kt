@@ -6,8 +6,9 @@ import com.gdbc.clubdeportivo.data.model.Moroso
 import com.gdbc.clubdeportivo.data.model.Pago
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import com.gdbc.clubdeportivo.data.repository.PagoRepository
 
-class MorosoRepository(private val dbHelper: BDatos, private val pagoRepository: PagoRepository) {
+class MorosoRepository(private val dbHelper: BDatos) {
 
     fun listarMorosos(): MutableList<Moroso> {
         val db = dbHelper.readableDatabase
@@ -45,8 +46,8 @@ class MorosoRepository(private val dbHelper: BDatos, private val pagoRepository:
 			return response != -1L
 	 }
 
-	 fun agregarNuevosMorosos():List<Moroso>? {
-				val pagos = pagoRepository.pruebaBuscarUltimoPagoPorCliente() ?: return null
+	 fun agregarNuevosMorosos(pagoRepository: PagoRepository):List<Moroso>? {
+         val pagos = pagoRepository.pruebaBuscarUltimoPagoPorCliente() ?: return null
 				val nuevosMorosos = mutableListOf<Pago>()
 				pagos.forEach{p ->
 					 if(ChronoUnit.DAYS.between(p.fechaPago,LocalDate.now()) > 30) nuevosMorosos.add(p)
