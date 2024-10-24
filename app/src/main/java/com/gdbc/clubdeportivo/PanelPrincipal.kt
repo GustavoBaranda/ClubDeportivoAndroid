@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.gdbc.clubdeportivo.data.repository.MorosoRepository
 import com.google.android.material.navigation.NavigationView
 import com.gdbc.clubdeportivo.databinding.PanelPrincipalBinding
 
@@ -19,6 +20,7 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: PanelPrincipalBinding
+    private lateinit var morosoRepository: MorosoRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,7 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         navView.setupWithNavController(navController)
 
         navView.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

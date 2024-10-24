@@ -36,11 +36,18 @@
         android:id="@+id/nav_listar_cuotas_vencidas"
         android:name="com.gdbc.clubdeportivo.ui.listarcuotasvencidas.ListarCuotasVencidasFragment"
         android:label="@string/menu_listar_cuotas_vencidas"
-        tools:layout="@layout/fragment_listar_cuotas_vencidas" />
+        tools:layout="@layout/fragment_listar_cuotas_vencidas">
+    <action
+        android:id="@+id/action_listarCuotasVencidasFragment_to_nav_abonar"
+        app:destination="@id/nav_abonar" />
+    </fragment>
     <fragment
         android:id="@+id/nav_abonar"
         android:name="com.gdbc.clubdeportivo.ui.abonar.AbonarFragment"
         android:label="@string/menu_Abonar"
-        tools:layout="@layout/fragment_abonar" />
-
+        tools:layout="@layout/fragment_abonar" >
+    <argument
+        android:name="dni"
+        app:argType="string" />
+    </fragment>
 </navigation>
