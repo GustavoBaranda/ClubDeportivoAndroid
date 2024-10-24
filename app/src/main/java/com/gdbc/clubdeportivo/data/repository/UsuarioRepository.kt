@@ -47,7 +47,7 @@ class UsuarioRepository(dbHelper:BDatos) {
 			}
 	 }
 
-	 fun loguearse(usuario: Usuario):Usuario? {
+	 fun loguearse(usuario: Usuario): Usuario? {
 			val db = db.readableDatabase
 			var cursor: Cursor? = null
 			try {
@@ -75,5 +75,5 @@ class UsuarioRepository(dbHelper:BDatos) {
 				 cursor?.close()
 				 db.close()
 			}
-
+	 }
 }
