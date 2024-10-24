@@ -1,15 +1,35 @@
+# Archivos específicos de IntelliJ/Android Studio
 *.iml
-.gradle
-/local.properties
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/assetWizardSettings.xml
+.idea/**/gradle.xml
+.idea/**/navEditor.xml
+.idea/**/modules.xml
+.idea/**/runConfigurations/
+
+# Directorios de Gradle
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos locales de configuración (no se deben compartir)
+local.properties
+
+# Archivos de caché de Android/Java
 /.idea/caches
 /.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+
+# Configuraciones específicas de tu entorno
+/.idea/vcs.xml
+
+# Otros archivos de logs o datos temporales
+*.log
+
