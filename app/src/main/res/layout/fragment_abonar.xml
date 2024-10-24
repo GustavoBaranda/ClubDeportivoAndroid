@@ -7,16 +7,17 @@
     tools:context=".ui.abonar.AbonarFragment">
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="344dp"
-        android:layout_height="48dp"
+        android:id="@+id/tvDNI"
+        style="@style/editText"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="DNI"
         android:layout_marginTop="80dp"
         android:background="@drawable/rounded_corner"
-        android:ems="10"
+
         android:inputType="text"
-        android:text="@string/dniAbonar"
+        android:hint="@string/dni_hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +31,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText">
+        app:layout_constraintTop_toBottomOf="@+id/tvDNI">
 
         <TextView
             android:id="@+id/textView4"
