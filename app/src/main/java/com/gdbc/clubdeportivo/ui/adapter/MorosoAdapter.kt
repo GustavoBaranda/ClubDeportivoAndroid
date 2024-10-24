@@ -8,11 +8,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gdbc.clubdeportivo.R
-import com.gdbc.clubdeportivo.data.model.Cliente
+import com.gdbc.clubdeportivo.data.model.Moroso
 
 class MorosoAdapter(
-    private val morosos: List<Cliente>,
-    private val onClick: (String) -> Unit
+    private val morosos: List<Moroso>,
+    private val onClick: (Int,String) -> Unit
 ) : RecyclerView.Adapter<MorosoAdapter.MorosoViewHolder>() {
 
     private var morososFiltrados = morosos.toMutableList()
@@ -22,11 +22,11 @@ class MorosoAdapter(
         private val tvDNI: TextView = itemView.findViewById(R.id.tvDNI)
         private val btnPay: Button = itemView.findViewById(R.id.btnPay)
 
-        fun bind(cliente: Cliente) {
-            "${cliente.nombre} ${cliente.apellido}".also { tvDefaulter.text = it }
-            "DNI: ${cliente.dni}".also { tvDNI.text = it }
+        fun bind(moroso: Moroso) {
+            "${moroso.nombre} ${moroso.apellido}".also { tvDefaulter.text = it }
+            "DNI: ${moroso.dni}".also { tvDNI.text = it }
             btnPay.setOnClickListener {
-                onClick(cliente.dni)
+                onClick(moroso.idCliente,moroso.dni)
             }
         }
     }

@@ -31,14 +31,18 @@ class ListarCuotasVencidasFragment : Fragment() {
     ): View {
         _binding = FragmentListarCuotasVencidasBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         val dbHelper = BDatos(requireContext())
         morosoRepository = MorosoRepository(dbHelper)
         initUI()
+
+
 
         return root
     }
 
     private fun initUI() {
+
         val searchView = binding.srcDefaulter
         val plate = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
         plate.setBackgroundColor(android.graphics.Color.TRANSPARENT)
@@ -78,9 +82,10 @@ class ListarCuotasVencidasFragment : Fragment() {
         recyclerView = binding.recyclerViewDefaulter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        morosoAdapter = MorosoAdapter(morosos) { dni ->
+        morosoAdapter = MorosoAdapter(morosos) { idCliente, dni ->
             val bundle = Bundle().apply {
                 putString("dni", dni)
+                putInt("idCliente", idCliente)
             }
             findNavController().navigate(R.id.nav_abonar, bundle)
         }
