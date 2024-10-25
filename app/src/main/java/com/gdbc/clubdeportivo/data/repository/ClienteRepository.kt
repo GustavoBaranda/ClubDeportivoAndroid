@@ -3,6 +3,7 @@ package com.gdbc.clubdeportivo.data.repository
 import android.database.Cursor
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
+import com.gdbc.clubdeportivo.data.util.ListadorDeClases
 import java.time.LocalDate
 
 class ClienteRepository(dbHelper:BDatos) {
@@ -36,58 +37,34 @@ class ClienteRepository(dbHelper:BDatos) {
 	 }
 
 
-	 fun clientes():List<Cliente> {
+	 fun clientes(): List<Cliente>? {
 			val db = db.readableDatabase
-			var cursor:Cursor? = null
+			var cursor: Cursor? = null
 			val listaClientes = mutableListOf<Cliente>();
 			try {
 				 val query = "SELECT * FROM Cliente;"
 				 cursor = db.rawQuery(query, null)
-				 while(cursor.moveToNext()) {
-						 val cliente = Cliente(
-							 idCliente = cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
-							 nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-							 apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
-							 dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
-							 tieneAptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("tiene_apto_fisico")),
-							 tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipo_cliente")),
-							 fechaRegistro = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_registro")))
-						)
-						listaClientes.add(cliente)
-				 }
-			return listaClientes
-			}catch (e:Exception) {
+				 return ListadorDeClases.listarClientes(cursor)
+			} catch (e: Exception) {
 				 println("Error durante el login: ${e.message}")
-				throw Exception(e.message)
-			}finally {
+				 return null
+			} finally {
 				 cursor?.close()
 				 db.close()
 			}
 	 }
 
-	 fun clientes(tipoCliente:String):List<Cliente> {
+	 fun clientes(tipoCliente:String):List<Cliente>? {
 			val db = db.readableDatabase
 			var cursor:Cursor? = null
 			val listaClientes = mutableListOf<Cliente>();
 			try {
 				 val query = "SELECT * FROM Cliente WHERE tipo_cliente = ?;"
 				 cursor = db.rawQuery(query, arrayOf(tipoCliente))
-				 while(cursor.moveToNext()) {
-						val cliente = Cliente(
-							 idCliente = cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
-							 nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-							 apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
-							 dni = cursor.getString(cursor.getColumnIndexOrThrow("dni")),
-							 tieneAptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("tiene_apto_fisico")),
-							 tipoCliente = cursor.getString(cursor.getColumnIndexOrThrow("tipo_cliente")),
-							 fechaRegistro = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_registro")))
-						)
-						listaClientes.add(cliente)
-				 }
-				 return listaClientes
+				 return ListadorDeClases.listarClientes(cursor)
 			}catch (e:Exception) {
 				 println("Error durante el login: ${e.message}")
-				 throw Exception(e.message)
+					return null
 			}finally {
 				 cursor?.close()
 				 db.close()

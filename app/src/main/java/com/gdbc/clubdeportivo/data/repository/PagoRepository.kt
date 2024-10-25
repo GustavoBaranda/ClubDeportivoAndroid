@@ -4,14 +4,15 @@ import android.content.ContentValues
 import android.database.Cursor
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Pago
+import com.gdbc.clubdeportivo.data.util.ListadorDeClases
 import java.time.LocalDate
 
-class PagoRepository(dbHelper:BDatos,clienteRepository: ClienteRepository) {
-			private val db = dbHelper
-	 		private val clienteRepo = clienteRepository
+class PagoRepository(private val dbHelper:BDatos) {
+
+	 		private val clienteRepo = ClienteRepository(dbHelper)
 
 			fun crearPago(pago: Pago):Boolean {
-				 val db = db.writableDatabase
+				 val db = dbHelper.writableDatabase
 				 try {
 						val contenedor = ContentValues()
 						contenedor.put("monto",pago.monto)
@@ -20,7 +21,7 @@ class PagoRepository(dbHelper:BDatos,clienteRepository: ClienteRepository) {
 						contenedor.put("tipo_pago",pago.tipoPago)
 						contenedor.put("id_actividad",pago.idActividad)
 						contenedor.put("cant_cuotas",pago.cantCuotas)
-						contenedor.put("fecha_pago",pago.fechaPago.toString())
+						contenedor.put("fecha_pago",LocalDate.now().toString())
 						val result = db.insert("Pago",null,contenedor)
 						return result != 1L
 				 }catch (e:Exception) {
@@ -32,7 +33,7 @@ class PagoRepository(dbHelper:BDatos,clienteRepository: ClienteRepository) {
 
 		fun buscarUltimoPago(dni:String):Pago? {
 			 val cliente = clienteRepo.clientePorDni(dni) ?: return null
-			 val db = db.readableDatabase
+			 val db = dbHelper.readableDatabase
 			 val query = "SELECT * FROM pago  ORDER BY fecha_pago DESC LIMIT 1"
 			 var cursor:Cursor? = null
 			 try {
@@ -58,7 +59,7 @@ class PagoRepository(dbHelper:BDatos,clienteRepository: ClienteRepository) {
 		}
 
 	 fun pruebaBuscarUltimoPagoPorCliente():List<Pago>? {
-			val db = db.readableDatabase
+			val db = dbHelper.readableDatabase
 			val query = """
     SELECT p.*
     FROM pago p
@@ -74,20 +75,7 @@ class PagoRepository(dbHelper:BDatos,clienteRepository: ClienteRepository) {
 			var cursor:Cursor? = null
 			try {
 				 cursor = db.rawQuery(query, null)
-				 while(cursor.moveToNext()) {
-						val pago =  Pago(
-							 idPago= cursor.getInt(cursor.getColumnIndexOrThrow("id_pago")),
-							 monto= cursor.getDouble(cursor.getColumnIndexOrThrow("monto")),
-							 metodoPago= cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
-							 idCliente= cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
-							 tipoPago= cursor.getString(cursor.getColumnIndexOrThrow("tipo_pago")),
-							 idActividad= cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad")),
-							 cantCuotas= cursor.getInt(cursor.getColumnIndexOrThrow("cant_cuotas")),
-							 fechaPago= LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_pago"))),
-						)
-						listPago.add(pago)
-				 }
-				 return listPago
+				 return ListadorDeClases.listarPagos(cursor)
 			}catch (e:Exception) {
 				 return  null
 			}finally {
