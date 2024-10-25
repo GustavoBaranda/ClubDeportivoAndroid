@@ -62,4 +62,17 @@ class ActividadRepository(private val dbHelper:BDatos) {
 				 return null
 			}
 	 }
+
+	 fun limpiarActividadesClientesNoSocios ():Boolean {
+			val db = dbHelper.writableDatabase
+			val filasEliminadas = db.delete(
+				 "inscripcion",
+				 "id_cliente IN (SELECT id_cliente FROM Cliente WHERE tipo_cliente = ?)",
+				 arrayOf("no socio")
+			)
+
+			db.close()
+			return filasEliminadas > 0
+	 }
+
 }
