@@ -19,10 +19,10 @@ class ListarCuotasVencidasFragment : Fragment() {
 
     private var _binding: FragmentListarCuotasVencidasBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var morosoAdapter: MorosoAdapter
     private lateinit var morosoRepository: MorosoRepository
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,22 +32,26 @@ class ListarCuotasVencidasFragment : Fragment() {
         _binding = FragmentListarCuotasVencidasBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val dbHelper = BDatos(requireContext())
-        morosoRepository = MorosoRepository(dbHelper)
+        initDB()
         initUI()
-
-
+        initListeners()
 
         return root
     }
 
-    private fun initUI() {
+    private fun initDB() {
+        val dbHelper = BDatos(requireContext())
+        morosoRepository = MorosoRepository(dbHelper)
+    }
 
+    private fun initUI() {
         val searchView = binding.srcDefaulter
         val plate = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
         plate.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         binding.srcDefaulter.queryHint = "Buscar por nombre..."
+    }
 
+    private fun initListeners() {
 
         binding.srcDefaulter.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
@@ -72,11 +76,6 @@ class ListarCuotasVencidasFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        refreshData()
-    }
-
     private fun refreshData() {
         val morosos = morosoRepository.listarMorosos()
         recyclerView = binding.recyclerViewDefaulter
@@ -90,6 +89,11 @@ class ListarCuotasVencidasFragment : Fragment() {
             findNavController().navigate(R.id.nav_abonar, bundle)
         }
         recyclerView.adapter = morosoAdapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshData()
     }
 
     override fun onDestroyView() {

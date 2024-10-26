@@ -15,7 +15,9 @@
         android:id="@+id/nav_ingresar_cliente"
         android:name="com.gdbc.clubdeportivo.ui.ingresarcliente.IngresarClienteFragment"
         android:label="@string/menu_inscripcion_cliente"
-        tools:layout="@layout/fragment_ingresar_cliente" />
+        tools:layout="@layout/fragment_ingresar_cliente">
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_finalizar_inscripcion"
@@ -46,8 +48,8 @@
         android:name="com.gdbc.clubdeportivo.ui.abonar.AbonarFragment"
         android:label="@string/menu_Abonar"
         tools:layout="@layout/fragment_abonar" >
-    <argument
-        android:name="dni"
-        app:argType="string" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
     </fragment>
 </navigation>

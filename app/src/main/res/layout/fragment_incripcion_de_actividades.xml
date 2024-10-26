@@ -51,7 +51,7 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/radioSocio"
-                android:text="@string/socio"
+                android:text="@string/socio_text"
                 android:textSize="20sp" />
 
             <RadioButton
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/radioNoSocio"
-                android:text="@string/no_socio"
+                android:text="@string/no_socio_text"
                 android:textSize="20sp" />
         </RadioGroup>
 

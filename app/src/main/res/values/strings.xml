@@ -32,16 +32,22 @@
     <string name="tituloAptoFisico">Apto Fisico</string>
     <string name="btn_ingresar">Registrar</string>
     <string name="registro_de_clientes">Registro de Clientes</string>
-    <string name="inscripci_n_de_clientes">Inscripción de Clientes</string>
-    <string name="dni">DNI</string>
-    <string name="apellido">Apellido</string>
-    <string name="nombre">Nombre</string>
-    <string name="apto_f_sico">Apto Físico</string>
-    <string name="pagar">Pagar</string>
+
+    <!--    Ingresar Cliente-->
+    <string name="inscripcion_title">Inscripción de Clientes</string>
+    <string name="nombre_hint">Nombre</string>
+    <string name="apellido_hint">Apellido</string>
+    <string name="dni_hint2">DNI</string>
+    <string name="alias_hint">Alias</string>
+    <string name="contraseña_hint">Contraseña</string>
+    <string name="apto_fisico_text">Apto Físico</string>
+    <string name="socio_text">Socio</string>
+    <string name="no_socio_text">No Socio</string>
+    <string name="pagar_btn">Pagar</string>
+
     <string name="ok">OK</string>
     <string name="si">Si</string>
-    <string name="socio">Socio</string>
-    <string name="no_socio">No Socio</string>
+
     <string name="dni_hint">Ingrese un  DNI\n</string>
     <string name="radioSocio">Descripcion Socio</string>
     <string name="radioNoSocio">Descripcion No Socio</string>

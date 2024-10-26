@@ -47,7 +47,7 @@
             android:backgroundTint="#97148519"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:text="@string/pagar"
+            android:text="@string/pagar_btn"
             tools:text="Pagar" />
 
     </LinearLayout>
