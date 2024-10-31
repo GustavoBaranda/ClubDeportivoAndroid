@@ -13,8 +13,10 @@ import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
 import com.gdbc.clubdeportivo.data.model.Usuario
 import com.gdbc.clubdeportivo.data.repository.ClienteRepository
+import com.gdbc.clubdeportivo.data.repository.MorosoRepository
 import com.gdbc.clubdeportivo.data.repository.UsuarioRepository
 import com.gdbc.clubdeportivo.databinding.FragmentIngresarClienteBinding
+import com.gdbc.clubdeportivo.ui.abonar.AbonarFragment
 import java.time.LocalDate
 
 class IngresarClienteFragment : Fragment() {
@@ -24,6 +26,7 @@ class IngresarClienteFragment : Fragment() {
 
     private lateinit var clienteRepository: ClienteRepository
     private lateinit var usuarioRepository: UsuarioRepository
+    private lateinit var morosoRepository: MorosoRepository
 
 
     override fun onCreateView(
@@ -48,7 +51,7 @@ class IngresarClienteFragment : Fragment() {
 
     private fun initListeners() {
 
-        binding.btnPagar.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             if (validarCampos()) {
                 val datos = obtenerDatos()
 
@@ -65,10 +68,11 @@ class IngresarClienteFragment : Fragment() {
                 val usuario = crearUsuario()
                 val cliente = crearCliente()
 
-//                Dejar comentada para no seguir agregando clientes al pepe
-//                usuarioRepository.crearUsuarioCliente(usuario, cliente)
+                usuarioRepository.crearUsuarioCliente(usuario, cliente)
+                morosoRepository.agregarMoroso(cliente.idCliente!!)
+
                 val bundle = Bundle().apply {
-                    putString("dni", cliente.dni)
+                    putString(AbonarFragment.DNI, cliente.dni)
                 }
                 findNavController().navigate(R.id.nav_abonar, bundle)
 

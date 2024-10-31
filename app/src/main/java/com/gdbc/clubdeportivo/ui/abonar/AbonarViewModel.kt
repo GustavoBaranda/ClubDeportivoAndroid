@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 
 class AbonarViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>()
-    val text: LiveData<String> = _text
+    private val _dni = MutableLiveData<String>()
+    val dni: LiveData<String> get()  = _dni
 
     fun setDni(dni: String) {
-        _text.value = dni
+        _dni.value = dni
     }
 }

@@ -27,40 +27,61 @@
     <string name="listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="borrar_postulante">Borrar Postulante</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-    <string name="seleccion_de_actividades">Seleccion de Actividades</string>
+    <string name="actividades_subtitle">Seleccion de Actividades</string>
+    <string name="cuotas_subtitle">Seleccion de Cuotas</string>
     <string name="titulo">Registro de Clientes</string>
     <string name="tituloAptoFisico">Apto Fisico</string>
     <string name="btn_ingresar">Registrar</string>
     <string name="registro_de_clientes">Registro de Clientes</string>
 
-    <!--    Ingresar Cliente-->
+    <!--Ingresar Cliente-->
     <string name="inscripcion_title">Inscripción de Clientes</string>
     <string name="nombre_hint">Nombre</string>
     <string name="apellido_hint">Apellido</string>
-    <string name="dni_hint2">DNI</string>
+    <string name="dni_hint">DNI</string>
     <string name="alias_hint">Alias</string>
     <string name="contraseña_hint">Contraseña</string>
     <string name="apto_fisico_text">Apto Físico</string>
     <string name="socio_text">Socio</string>
     <string name="no_socio_text">No Socio</string>
-    <string name="pagar_btn">Pagar</string>
+    <string name="siguiente_btn">Siguiente</string>
+
+    <!--Abonar-->
+    <string name="pago_hint">Seleccione un medio de pago</string>
+    <string name="pago_txt">Importe</string>
+    <string name="buscar_txt">Buscar cliente</string>
+    <string name="metodo_de_pago">Método de pago</string>
+    <string name="radioTarjeta">Tarjeta</string>
+    <string name="radioEfectivo">Efectivo</string>
+    <string name="btnPagar">Pagar</string>
+    <string name="importe">-</string>
+    <string name="buscar">Buscar por Dni</string>
+    <string name="buscar_btn">Buscar</string>
+    <string name="reset_btn">Reset</string>
+    <string-array name="arrayCuotas">
+        <item>1 Cuota</item>
+        <item>3 Cuotas</item>
+        <item>6 Cuotas</item>
+    </string-array>
+
+    <string-array name="arrayActividades">
+        <item>Natación</item>
+        <item>Yoga</item>
+        <item>Fútbol</item>
+        <item>Gimnasio</item>
+        <item>Spinning</item>
+    </string-array>
 
     <string name="ok">OK</string>
     <string name="si">Si</string>
-
-    <string name="dni_hint">Ingrese un  DNI\n</string>
     <string name="radioSocio">Descripcion Socio</string>
     <string name="radioNoSocio">Descripcion No Socio</string>
     <string name="descripcion_button">Descripción del botón para inscribir</string>
     <string name="inscribir_actividad">Inscribir Actividad</string>
     <string name="descripcion_dni">Campo para ingresar DNI</string>
     <string name="titleFinalizarRegistroInscripcion">Finalizar Registro de Inscripción</string>
-    <string name="metodo_de_pago">Método de pago</string>
     <string name="incribir_button">Inscribir</string>
-    <string name="radioTarjeta">Tarjeta</string>
-    <string name="radioEfectivo">Efectivo</string>
     <string name="stringActividades">Seleccioná la actividad</string>
-    <string name="btnPagar">PAGAR</string>
     <string name="btnMenuAnterior">Menú Anterior</string>
     <string name="titulo_morosos">"Listado de Morosos"</string>
     <string name="volver">Volver</string>
@@ -69,18 +90,7 @@
     <string name="efectivo">Efectivo</string>
     <string name="tarjeta">Tarjeta</string>
     <string name="selecci_n_de_actividades">Selección de Actividades</string>
-    <string name="pagarBtn">Pagar</string>
-    <string-array name="arrayCuotas">
-        <item>1 Cuota</item>
-        <item>3 Cuota</item>
-        <item>6 Cuota</item>
-    </string-array>
-
-    <string-array name="arrayActividades">
-        <item>Zumba</item>
-        <item>Musculación</item>
-        <item>Gimnasia</item>
-        <item>Ping Pong</item>
-    </string-array>
+    <string name="pagar_btn">Pagar</string>
+    <string name="pagos_title">Registro de Pagos</string>
 
 </resources>

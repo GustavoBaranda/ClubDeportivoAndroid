@@ -32,7 +32,7 @@ class ClienteRepository(dbHelper: BDatos) {
             return null
         } finally {
             cursor?.close()
-            db.close()
+//            db.close()
         }
     }
 

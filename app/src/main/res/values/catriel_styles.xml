@@ -8,18 +8,21 @@
         <item name="android:padding">8sp</item>
         <item name="android:backgroundTint">#000000</item>
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:text">Inscribir</item>
     </style>
 
     <style name="title">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="subtitle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">center</item>
+
     </style>
 
     <style name="editText">

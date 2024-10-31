@@ -71,8 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/seleccion_de_actividades"
-            android:contentDescription="@string/seleccion_de_actividades" />
+            android:text="@string/actividades_subtitle"
+            android:contentDescription="@string/actividades_subtitle" />
 
         <Spinner
             android:id="@+id/spinnerActividades"

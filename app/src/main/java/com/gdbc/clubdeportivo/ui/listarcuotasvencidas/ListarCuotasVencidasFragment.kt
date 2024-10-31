@@ -13,6 +13,7 @@ import com.gdbc.clubdeportivo.R
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.repository.MorosoRepository
 import com.gdbc.clubdeportivo.databinding.FragmentListarCuotasVencidasBinding
+import com.gdbc.clubdeportivo.ui.abonar.AbonarFragment
 import com.gdbc.clubdeportivo.ui.adapter.MorosoAdapter
 
 class ListarCuotasVencidasFragment : Fragment() {
@@ -83,8 +84,8 @@ class ListarCuotasVencidasFragment : Fragment() {
 
         morosoAdapter = MorosoAdapter(morosos) { idCliente, dni ->
             val bundle = Bundle().apply {
-                putString("dni", dni)
-                putInt("idCliente", idCliente)
+                putString(AbonarFragment.DNI, dni)
+                putInt(AbonarFragment.ID, idCliente)
             }
             findNavController().navigate(R.id.nav_abonar, bundle)
         }

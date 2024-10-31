@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -13,12 +13,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/inscripcion_title"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        style="@style/title"
+        android:text="@string/inscripcion_title"/>
 
     <EditText
         android:id="@+id/etNombre"
@@ -51,7 +47,7 @@
         android:layout_marginTop="24dp"
         android:autofillHints=""
         android:background="@drawable/rounded_corner"
-        android:hint="@string/dni_hint2"
+        android:hint="@string/dni_hint"
         android:inputType="number"
         android:padding="12dp"
         android:textSize="20sp" />
@@ -126,12 +122,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnPagar"
+        android:id="@+id/btnNext"
         style="@style/button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/pagar_btn" />
+        android:text="@string/siguiente_btn" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

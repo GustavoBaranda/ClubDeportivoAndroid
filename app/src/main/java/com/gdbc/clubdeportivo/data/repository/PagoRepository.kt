@@ -7,60 +7,63 @@ import com.gdbc.clubdeportivo.data.model.Pago
 import com.gdbc.clubdeportivo.data.util.ListadorDeClases
 import java.time.LocalDate
 
-class PagoRepository(private val dbHelper:BDatos) {
+class PagoRepository(private val dbHelper: BDatos) {
 
-	 		private val clienteRepo = ClienteRepository(dbHelper)
+    private val clienteRepo = ClienteRepository(dbHelper)
 
-			fun crearPago(pago: Pago):Boolean {
-				 val db = dbHelper.writableDatabase
-				 try {
-						val contenedor = ContentValues()
-						contenedor.put("monto",pago.monto)
-						contenedor.put("metodo_pago",pago.metodoPago)
-						contenedor.put("id_cliente",pago.idCliente)
-						contenedor.put("tipo_pago",pago.tipoPago)
-						contenedor.put("id_actividad",pago.idActividad)
-						contenedor.put("cant_cuotas",pago.cantCuotas)
-						contenedor.put("fecha_pago",LocalDate.now().toString())
-						val result = db.insert("Pago",null,contenedor)
-						return result != 1L
-				 }catch (e:Exception) {
-						return false
-				 }finally {
-				 			db.close()
-				 }
-			}
+    fun crearPago(pago: Pago): Boolean {
+        val db = dbHelper.writableDatabase
+        return try {
+            val contenedor = ContentValues().apply {
+                put("monto", pago.monto)
+                put("metodo_pago", pago.metodoPago)
+                put("id_cliente", pago.idCliente)
+                put("tipo_pago", pago.tipoPago)
+                put("id_actividad", pago.idActividad)
+                put("cant_cuotas", pago.cantCuotas)
+                put("fecha_pago", LocalDate.now().toString())
+            }
+            val result = db.insert("Pago", null, contenedor)
+            result != -1L
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        } finally {
+            db.close()
+        }
+    }
 
-		fun buscarUltimoPago(dni:String):Pago? {
-			 val cliente = clienteRepo.clientePorDni(dni) ?: return null
-			 val db = dbHelper.readableDatabase
-			 val query = "SELECT * FROM pago  ORDER BY fecha_pago DESC LIMIT 1"
-			 var cursor:Cursor? = null
-			 try {
-					cursor = db.rawQuery(query, arrayOf(cliente.idCliente.toString()))
-					if(cursor.moveToFirst()) {
-						 return Pago(
-								 idPago= cursor.getInt(cursor.getColumnIndexOrThrow("id_pago")),
-												monto= cursor.getDouble(cursor.getColumnIndexOrThrow("monto")),
-												metodoPago= cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
-												idCliente= cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
-												tipoPago= cursor.getString(cursor.getColumnIndexOrThrow("tipo_pago")),
-												idActividad= cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad")),
-												cantCuotas= cursor.getInt(cursor.getColumnIndexOrThrow("cant_cuotas")),
-												fechaPago= LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_pago"))),
-						 )
-					}
-					return null
-			 }catch (e:Exception) {
-					return  null
-			 }finally {
-			 			cursor?.close()
-			 }
-		}
 
-	 fun pruebaBuscarUltimoPagoPorCliente():List<Pago>? {
-			val db = dbHelper.readableDatabase
-			val query = """
+    fun buscarUltimoPago(dni: String): Pago? {
+        val cliente = clienteRepo.clientePorDni(dni) ?: return null
+        val db = dbHelper.readableDatabase
+        val query = "SELECT * FROM pago  ORDER BY fecha_pago DESC LIMIT 1"
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(query, arrayOf(cliente.idCliente.toString()))
+            if (cursor.moveToFirst()) {
+                return Pago(
+                    idPago = cursor.getInt(cursor.getColumnIndexOrThrow("id_pago")),
+                    monto = cursor.getDouble(cursor.getColumnIndexOrThrow("monto")),
+                    metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
+                    idCliente = cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
+                    tipoPago = cursor.getString(cursor.getColumnIndexOrThrow("tipo_pago")),
+                    idActividad = cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad")),
+                    cantCuotas = cursor.getInt(cursor.getColumnIndexOrThrow("cant_cuotas")),
+                    fechaPago = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_pago"))),
+                )
+            }
+            return null
+        } catch (e: Exception) {
+            return null
+        } finally {
+            cursor?.close()
+        }
+    }
+
+    fun pruebaBuscarUltimoPagoPorCliente(): List<Pago>? {
+        val db = dbHelper.readableDatabase
+        val query = """
     SELECT p.*
     FROM pago p
     INNER JOIN (
@@ -71,15 +74,15 @@ class PagoRepository(private val dbHelper:BDatos) {
     ON p.id_cliente = pagos_recientes.id_cliente AND p.fecha_pago = pagos_recientes.max_fecha
     ORDER BY p.fecha_pago DESC
 """.trimIndent()
-			val listPago = mutableListOf<Pago>()
-			var cursor:Cursor? = null
-			try {
-				 cursor = db.rawQuery(query, null)
-				 return ListadorDeClases.listarPagos(cursor)
-			}catch (e:Exception) {
-				 return  null
-			}finally {
-				 cursor?.close()
-			}
-	 }
+        val listPago = mutableListOf<Pago>()
+        var cursor: Cursor? = null
+        try {
+            cursor = db.rawQuery(query, null)
+            return ListadorDeClases.listarPagos(cursor)
+        } catch (e: Exception) {
+            return null
+        } finally {
+            cursor?.close()
+        }
+    }
 }

@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
             val username = userLogin.text.toString()
             val password = passwordLogin.text.toString()
 
-            if (username == "admin" && password == "admin") {
+            if (username == "" && password == "") {
                 val intent = Intent(this, PanelPrincipal::class.java)
                 startActivity(intent)
                 finish() //
