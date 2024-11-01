@@ -20,7 +20,6 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: PanelPrincipalBinding
-    private lateinit var morosoRepository: MorosoRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

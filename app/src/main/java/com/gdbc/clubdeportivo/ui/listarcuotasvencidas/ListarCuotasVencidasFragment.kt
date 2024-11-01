@@ -23,6 +23,7 @@ class ListarCuotasVencidasFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var morosoAdapter: MorosoAdapter
+    private lateinit var dbHelper: BDatos
     private lateinit var morosoRepository: MorosoRepository
 
     override fun onCreateView(
@@ -41,7 +42,7 @@ class ListarCuotasVencidasFragment : Fragment() {
     }
 
     private fun initDB() {
-        val dbHelper = BDatos(requireContext())
+        dbHelper = BDatos(requireContext())
         morosoRepository = MorosoRepository(dbHelper)
     }
 
@@ -99,6 +100,8 @@ class ListarCuotasVencidasFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        dbHelper.close()
         _binding = null
+
     }
 }

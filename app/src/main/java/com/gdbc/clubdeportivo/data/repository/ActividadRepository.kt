@@ -53,7 +53,7 @@ class ActividadRepository(private val dbHelper:BDatos) {
 	fun pagarIncribirActividad(pago: Pago): Pago? {
 			val db = dbHelper.writableDatabase
 			try {
-				 if (!pagoRepo.crearPago(pago)) return null
+				 if (pagoRepo.crearPago(pago) < 0) return null
 				 val contenedor = ContentValues()
 				 contenedor.put("id_cliente", pago.idCliente)
 				 contenedor.put("id_actividad", pago.idActividad)

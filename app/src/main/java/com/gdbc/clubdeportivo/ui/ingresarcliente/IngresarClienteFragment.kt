@@ -24,6 +24,7 @@ class IngresarClienteFragment : Fragment() {
     private var _binding: FragmentIngresarClienteBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var dbHelper: BDatos
     private lateinit var clienteRepository: ClienteRepository
     private lateinit var usuarioRepository: UsuarioRepository
     private lateinit var morosoRepository: MorosoRepository
@@ -44,7 +45,7 @@ class IngresarClienteFragment : Fragment() {
     }
 
     private fun initDB() {
-        val dbHelper = BDatos(requireContext())
+        dbHelper = BDatos(requireContext())
         clienteRepository = ClienteRepository(dbHelper)
         usuarioRepository = UsuarioRepository(dbHelper)
     }
@@ -159,6 +160,7 @@ class IngresarClienteFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        dbHelper.close()
         _binding = null
     }
 }

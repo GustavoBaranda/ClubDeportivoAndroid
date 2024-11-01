@@ -72,6 +72,14 @@
         <item>Spinning</item>
     </string-array>
 
+    <!--Comprobante-->
+    <string name="factura">Factura nº %1$s</string>
+    <string name="nombre_completo">Nombre: %1$s %2$s</string>
+    <string name="monto">Monto $ %1$.2f</string>
+    <string name="cuota">Cuota: %1$s</string>
+    <string name="fecha_pago">Fecha: %1$s</string>
+
+
     <string name="ok">OK</string>
     <string name="si">Si</string>
     <string name="radioSocio">Descripcion Socio</string>

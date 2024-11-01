@@ -67,11 +67,9 @@ class UsuarioRepository(dbHelper: BDatos) {
                 return null
             }
         } catch (e: Exception) {
-
             println("Error durante el login: ${e.message}")
             return null
         } finally {
-
             cursor?.close()
             db.close()
         }

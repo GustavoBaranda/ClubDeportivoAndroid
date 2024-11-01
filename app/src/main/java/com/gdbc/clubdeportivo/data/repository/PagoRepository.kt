@@ -11,9 +11,11 @@ class PagoRepository(private val dbHelper: BDatos) {
 
     private val clienteRepo = ClienteRepository(dbHelper)
 
-    fun crearPago(pago: Pago): Boolean {
+    fun crearPago(pago: Pago): Long {
+
         val db = dbHelper.writableDatabase
-        return try {
+        var result: Long = -1
+        try {
             val contenedor = ContentValues().apply {
                 put("monto", pago.monto)
                 put("metodo_pago", pago.metodoPago)
@@ -23,14 +25,15 @@ class PagoRepository(private val dbHelper: BDatos) {
                 put("cant_cuotas", pago.cantCuotas)
                 put("fecha_pago", LocalDate.now().toString())
             }
-            val result = db.insert("Pago", null, contenedor)
-            result != -1L
+
+            result = db.insert("Pago", null, contenedor)
+
         } catch (e: Exception) {
             e.printStackTrace()
-            false
         } finally {
             db.close()
         }
+        return result
     }
 
 
@@ -74,7 +77,6 @@ class PagoRepository(private val dbHelper: BDatos) {
     ON p.id_cliente = pagos_recientes.id_cliente AND p.fecha_pago = pagos_recientes.max_fecha
     ORDER BY p.fecha_pago DESC
 """.trimIndent()
-        val listPago = mutableListOf<Pago>()
         var cursor: Cursor? = null
         try {
             cursor = db.rawQuery(query, null)
@@ -83,6 +85,7 @@ class PagoRepository(private val dbHelper: BDatos) {
             return null
         } finally {
             cursor?.close()
+            db.close()
         }
     }
 }

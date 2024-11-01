@@ -1,5 +1,6 @@
 package com.gdbc.clubdeportivo.ui.abonar
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.gdbc.clubdeportivo.ComprobanteActivity
 import com.gdbc.clubdeportivo.R
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
@@ -34,7 +36,9 @@ class AbonarFragment : Fragment() {
 
     private var _binding: FragmentAbonarBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var abonarViewModel: AbonarViewModel
+    private lateinit var dbHelper:BDatos
     private lateinit var clienteRepository: ClienteRepository
     private lateinit var morosoRepository: MorosoRepository
     private lateinit var pagoRepository: PagoRepository
@@ -45,9 +49,7 @@ class AbonarFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAbonarBinding.inflate(inflater, container, false)
         abonarViewModel = ViewModelProvider(this)[AbonarViewModel::class.java]
@@ -60,7 +62,7 @@ class AbonarFragment : Fragment() {
     }
 
     private fun initDB() {
-        val dbHelper = BDatos(requireContext())
+        dbHelper = BDatos(requireContext())
         clienteRepository = ClienteRepository(dbHelper)
         morosoRepository = MorosoRepository(dbHelper)
         pagoRepository = PagoRepository(dbHelper)
@@ -117,6 +119,7 @@ class AbonarFragment : Fragment() {
 
     private fun limpiarDatos() {
         clienteActual = null
+        esSocio = false
         binding.etDNI.setText("")
         binding.tvImporte.text = formatearImporte(0)
         binding.tvDescription.text = getString(R.string.buscar_txt)
@@ -167,10 +170,7 @@ class AbonarFragment : Fragment() {
 
         binding.spCuotas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>, view: View, position: Int, id: Long
             ) {
                 actualizarImporte()
             }
@@ -180,10 +180,7 @@ class AbonarFragment : Fragment() {
 
         binding.spActividades.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>, view: View, position: Int, id: Long
             ) {
                 actualizarPase()
                 actualizarImporte()
@@ -256,38 +253,52 @@ class AbonarFragment : Fragment() {
         if (clienteActual != null) {
             val actividadId =
                 actividadRepository.obtenerIdPorNombre(binding.tvDescription.text.toString())
-            val montoTexto = binding.tvImporte.text.toString()
-                .replace(Regex("[$ ]"), "")
-                .replace(".", "")
-                .replace(",", ".")
-                .trim()
+            val montoTexto =
+                binding.tvImporte.text.toString().replace(Regex("[$ ]"), "").replace(".", "")
+                    .replace(",", ".").trim()
             val tarjeta = binding.rbTarjeta.isChecked
             val cuotas = extraerNumeroDeCuotas(binding.spCuotas.selectedItem.toString())
+            val metodoPago = if (binding.rbEfectivo.isChecked) "efectivo" else "tarjeta"
+            val cliente = clienteActual!!.idCliente!!
+            val cuota = if (esSocio) "mensual" else "diario"
 
             val pago = Pago(
                 monto = montoTexto.toDoubleOrNull() ?: 0.0,
-                metodoPago = if (binding.rbEfectivo.isChecked) "efectivo" else "tarjeta",
-                idCliente = clienteActual!!.idCliente!!,
-                tipoPago = if (esSocio) "mensual" else "diario",
+                metodoPago = metodoPago,
+                idCliente = cliente,
+                tipoPago = cuota,
                 idActividad = if (esSocio) null else actividadId,
                 cantCuotas = if (tarjeta) cuotas else null,
                 fechaPago = LocalDate.now()
             )
 
-            if (pagoRepository.crearPago(pago)) {
-                morosoRepository.eliminarMoroso(clienteActual!!.idCliente!!)
+            val exito = pagoRepository.crearPago(pago)
+            if (exito > 0) {
+                morosoRepository.eliminarMoroso(cliente)
+
+                val bundle = Bundle().apply {
+                    putDouble("monto", montoTexto.toDoubleOrNull() ?: 0.0)
+                    putString("nombre", clienteActual?.nombre)
+                    putString("apellido", clienteActual?.apellido)
+                    putString("cuota", cuota.uppercase())
+                    putString("pagoId", exito.toString())
+                }
                 limpiarDatos()
-                mostrarToast("Pago realizado con exito")
+
+                val intent = Intent(requireContext(), ComprobanteActivity::class.java).apply {
+                    putExtras(bundle)
+                }
+                startActivity(intent)
+
             } else {
                 mostrarToast("Error al realizar el pago")
             }
-        } else {
-            mostrarToast("No hay cliente seleccionado")
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        dbHelper.close()
         _binding = null
     }
 }
