@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_finalizar_inscripcion" />
 
     <fragment
-        android:id="@+id/nav_borrar_postulante"
-        android:name="com.gdbc.clubdeportivo.ui.borrarpostulante.BorrarPostulanteFragment"
-        android:label="@string/menu_borrar_postulante"
-        tools:layout="@layout/fragment_borrar_postulante" />
+        android:id="@+id/nav_visualizar_carnet"
+        android:name="com.gdbc.clubdeportivo.ui.visualizarcarnet.VisualizarCarnetFragment"
+        android:label="@string/menu_visualizar_carnet"
+        tools:layout="@layout/fragment_visualizar_carnet" />
 
     <fragment
         android:id="@+id/nav_incripcion_de_actividades"

@@ -1,13 +1,13 @@
-package com.gdbc.clubdeportivo.ui.borrarpostulante
+package com.gdbc.clubdeportivo.ui.visualizarcarnet
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BorrarPostulanteViewModel : ViewModel() {
+class VisualizarCarnetViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Postulantes borrados"
+        value = "A LABURAR LOS FRONTSSSSSSS"
     }
     val text: LiveData<String> = _text
 }

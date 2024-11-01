@@ -8,20 +8,25 @@
             android:title="@string/menu_inscripcion_cliente"/>
 
         <item
-            android:id="@+id/nav_finalizar_inscripcion"
-            android:title="@string/menu_finalizar_inscripcion"/>
-        <item
-            android:id="@+id/nav_borrar_postulante"
-            android:title="@string/menu_borrar_postulante" />
-        <item
-            android:id="@+id/nav_incripcion_de_actividades"
-            android:title="@string/menu_Incripcion_de_actividades" />
+            android:id="@+id/nav_abonar"
+            android:title="@string/menu_Abonar" />
         <item
             android:id="@+id/nav_listar_cuotas_vencidas"
             android:title="@string/menu_listar_cuotas_vencidas" />
+
         <item
-            android:id="@+id/nav_abonar"
-            android:title="@string/menu_Abonar" />
+            android:id="@+id/nav_visualizar_carnet"
+            android:title="@string/menu_visualizar_carnet" />
+
+        <item
+            android:id="@+id/nav_finalizar_inscripcion"
+            android:title="@string/menu_finalizar_inscripcion"/>
+
+        <item
+            android:id="@+id/nav_incripcion_de_actividades"
+            android:title="@string/menu_Incripcion_de_actividades" />
+
+
         <item
             android:id="@+id/nav_home"
             android:title="@string/menu_home" />

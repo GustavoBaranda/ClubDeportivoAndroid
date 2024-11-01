@@ -33,7 +33,7 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val navController = findNavController(R.id.nav_host_fragment_content_panel_principal)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_ingresar_cliente, R.id.nav_borrar_postulante,
+                R.id.nav_home, R.id.nav_ingresar_cliente, R.id.nav_visualizar_carnet,
                 R.id.nav_finalizar_inscripcion, R.id.nav_incripcion_de_actividades,
                 R.id.nav_listar_cuotas_vencidas, R.id.nav_abonar
             ), drawerLayout
@@ -46,7 +46,6 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val menu = navView.menu
         if (userRole == "cliente") {
             menu.findItem(R.id.nav_ingresar_cliente).isVisible = false
-            menu.findItem(R.id.nav_borrar_postulante).isVisible = false
             menu.findItem(R.id.nav_finalizar_inscripcion).isVisible = false
             menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
             menu.findItem(R.id.nav_listar_cuotas_vencidas).isVisible = false

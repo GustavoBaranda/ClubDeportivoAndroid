@@ -1,4 +1,4 @@
-package com.gdbc.clubdeportivo.ui.borrarpostulante
+package com.gdbc.clubdeportivo.ui.visualizarcarnet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.gdbc.clubdeportivo.databinding.FragmentBorrarPostulanteBinding
+import com.gdbc.clubdeportivo.databinding.FragmentVisualizarCarnetBinding
 
-class BorrarPostulanteFragment : Fragment() {
+class VisualizarCarnetFragment : Fragment() {
 
-    private var _binding: FragmentBorrarPostulanteBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentVisualizarCarnetBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,12 +20,12 @@ class BorrarPostulanteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val slideshowViewModel =
-            ViewModelProvider(this).get(BorrarPostulanteViewModel::class.java)
+            ViewModelProvider(this)[VisualizarCarnetViewModel::class.java]
 
-        _binding = FragmentBorrarPostulanteBinding.inflate(inflater, container, false)
+        _binding = FragmentVisualizarCarnetBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textBorrarPostulante
+        val textView: TextView = binding.textVisualizarCarnet
         slideshowViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
