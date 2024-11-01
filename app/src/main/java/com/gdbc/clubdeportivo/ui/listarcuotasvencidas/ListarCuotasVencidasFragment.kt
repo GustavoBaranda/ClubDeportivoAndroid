@@ -83,10 +83,9 @@ class ListarCuotasVencidasFragment : Fragment() {
         recyclerView = binding.recyclerViewDefaulter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        morosoAdapter = MorosoAdapter(morosos) { idCliente, dni ->
+        morosoAdapter = MorosoAdapter(morosos) { dni ->
             val bundle = Bundle().apply {
                 putString(AbonarFragment.DNI, dni)
-                putInt(AbonarFragment.ID, idCliente)
             }
             findNavController().navigate(R.id.nav_abonar, bundle)
         }

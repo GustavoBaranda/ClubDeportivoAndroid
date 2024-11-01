@@ -28,7 +28,6 @@ class AbonarFragment : Fragment() {
 
     companion object {
         const val DNI = "DNI"
-        const val ID = "idCliente"
         private const val PRECIO_MENSUAL = 30000
         private const val PRECIO_3_CUOTAS = PRECIO_MENSUAL * 1.10
         private const val PRECIO_6_CUOTAS = PRECIO_MENSUAL * 1.20

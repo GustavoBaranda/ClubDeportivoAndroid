@@ -41,13 +41,7 @@ class Login : AppCompatActivity() {
             val username = userLogin.text.toString()
             val password = passwordLogin.text.toString()
 
-            if (username == "" && password == "") {
-                val intent = Intent(this, PanelPrincipal::class.java)
-                startActivity(intent)
-                finish() //
-            } else {
-                Toast.makeText(this, "Usuario y/o Contraseña invalida", Toast.LENGTH_SHORT).show()
-            }
+            login(username,password)
         }
     }
 
@@ -58,6 +52,38 @@ class Login : AppCompatActivity() {
         usuarioRepository = UsuarioRepository(dbHelper)
         morosoRepository.agregarNuevosMorosos(pagoRepository)
     }
+
+    private fun login(username: String, password: String) {
+        if (username.isNotBlank() && password.isNotBlank()) {
+            val user = usuarioRepository.loguearse(username, password)
+
+            if (user != null) {
+                val intent = Intent(this, PanelPrincipal::class.java)
+                intent.putExtra("USER_ROLE", user.rol)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Usuario y/o Contraseña inválida", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        } else {
+            Toast.makeText(
+                this,
+                "Ingrese el usuario y la contraseña",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+//    private fun login(user: String, pass: String) {
+//        if (user == "" && pass == "") {
+//            val intent = Intent(this, PanelPrincipal::class.java)
+//            startActivity(intent)
+//            finish()
+//        } else {
+//            Toast.makeText(this, "Usuario y/o Contraseña invalida", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

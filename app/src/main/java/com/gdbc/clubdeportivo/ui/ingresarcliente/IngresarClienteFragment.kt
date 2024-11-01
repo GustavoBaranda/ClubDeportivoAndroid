@@ -29,7 +29,6 @@ class IngresarClienteFragment : Fragment() {
     private lateinit var usuarioRepository: UsuarioRepository
     private lateinit var morosoRepository: MorosoRepository
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

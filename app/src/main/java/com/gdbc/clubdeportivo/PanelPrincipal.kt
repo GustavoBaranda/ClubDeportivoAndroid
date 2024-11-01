@@ -12,9 +12,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.gdbc.clubdeportivo.data.repository.MorosoRepository
-import com.google.android.material.navigation.NavigationView
 import com.gdbc.clubdeportivo.databinding.PanelPrincipalBinding
+import com.google.android.material.navigation.NavigationView
 
 class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,8 +41,19 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        navView.setNavigationItemSelectedListener(this)
+        val userRole = intent.getStringExtra("USER_ROLE")
 
+        val menu = navView.menu
+        if (userRole == "cliente") {
+            menu.findItem(R.id.nav_ingresar_cliente).isVisible = false
+            menu.findItem(R.id.nav_borrar_postulante).isVisible = false
+            menu.findItem(R.id.nav_finalizar_inscripcion).isVisible = false
+            menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
+            menu.findItem(R.id.nav_listar_cuotas_vencidas).isVisible = false
+            menu.findItem(R.id.nav_abonar).isVisible = false
+        }
+
+        navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -57,9 +67,10 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 logout()
                 return true
             }
+
             else -> {
-                // Handle other navigation items
-                val navController = findNavController(R.id.nav_host_fragment_content_panel_principal)
+                val navController =
+                    findNavController(R.id.nav_host_fragment_content_panel_principal)
                 navController.navigate(item.itemId)
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
                 return true

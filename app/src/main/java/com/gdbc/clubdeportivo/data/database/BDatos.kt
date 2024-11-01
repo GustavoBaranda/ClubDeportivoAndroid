@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 private const val DB = "Clubdeportivo"
 
-class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 4) {
+class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_CLIENTE)
@@ -64,7 +64,7 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 4) {
 
 
         private const val INSERT_TABLE_USUARIO = "INSERT INTO usuario VALUES " +
-                "(NULL, 'jperez', 'pass123', 'cliente')," +
+                "(NULL, 'cliente', 'cliente', 'cliente')," +
                 "(NULL, 'agomez', 'pass456', 'cliente')," +
                 "(NULL, 'clopez', 'pass789', 'cliente')," +
                 "(NULL, 'mmartinez', 'pass321', 'cliente')," +
@@ -72,6 +72,7 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 4) {
                 "(NULL, 'esanchez', 'pass987', 'cliente')," +
                 "(NULL, 'mfernandez', 'pass147', 'cliente')," +
                 "(NULL, 'msanchez', 'pass258', 'cliente')," +
+                "(NULL, 'admin', 'admin', 'empleado')," +
                 "(NULL, 'mgalim', 'pelakiller', 'empleado')," +
                 "(NULL, 'alebadi', 'batman', 'empleado')," +
                 "(NULL, 'cescobar', 'asda1234', 'empleado')," +

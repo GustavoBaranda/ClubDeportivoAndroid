@@ -3,6 +3,7 @@ package com.gdbc.clubdeportivo.data.repository
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteConstraintException
+import android.util.Log
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
 import com.gdbc.clubdeportivo.data.model.Usuario
@@ -47,28 +48,27 @@ class UsuarioRepository(dbHelper: BDatos) {
         }
     }
 
-    fun loguearse(usuario: Usuario): Usuario? {
+    fun loguearse(alias: String, contrasena: String): Usuario? {
         val db = db.readableDatabase
         var cursor: Cursor? = null
-        try {
+        return try {
             val query = "SELECT * FROM Usuario WHERE alias = ? AND contrasena = ?;"
-            cursor = db.rawQuery(query, arrayOf(usuario.alias, usuario.contrasena))
+            cursor = db.rawQuery(query, arrayOf(alias, contrasena))
 
             if (cursor.moveToFirst()) {
 
-                return Usuario(
+                Usuario(
+                    idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("id_usuario")),
                     alias = cursor.getString(cursor.getColumnIndexOrThrow("alias")),
                     contrasena = cursor.getString(cursor.getColumnIndexOrThrow("contrasena")),
-                    rol = cursor.getString(cursor.getColumnIndexOrThrow("rol")),
-                    idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("id_usuario"))
+                    rol = cursor.getString(cursor.getColumnIndexOrThrow("rol"))
                 )
             } else {
-                println("No se encontró el usuario con el alias y la contraseña proporcionados")
-                return null
+                null
             }
         } catch (e: Exception) {
-            println("Error durante el login: ${e.message}")
-            return null
+            Log.e("db", "Error al consultar la db:", e)
+            null
         } finally {
             cursor?.close()
             db.close()

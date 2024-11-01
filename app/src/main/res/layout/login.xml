@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,64 +7,50 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:backgroundTint="@color/white"
-    tools:context=".MainActivity"
-    android:layout_gravity="center"
-    android:padding="24dp">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginHorizontal="15dp"
+        android:adjustViewBounds="false"
+        android:baselineAlignBottom="false"
+        android:contentDescription="@string/logo"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/breakingcode" />
+
+    <EditText
+        android:id="@+id/userLogin"
+        style="@style/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:layout_marginTop="22dp"
+        android:autofillHints="username"
+        android:hint="@string/username_hint"
+        android:inputType="text" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="350dp"
-            android:layout_height="360dp"
-            app:srcCompat="@drawable/breakingcode"
-            android:contentDescription="@string/logo" />
+    <EditText
+        android:id="@+id/passwordLogin"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:autofillHints="password"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/userLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:hint="@string/username_hint"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_corner"
-            android:inputType="text"
-            android:autofillHints="username" />
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/btnLogin"
+        />
 
-        <EditText
-            android:id="@+id/passwordLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:hint="@string/password_hint"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_corner"
-            android:inputType="textPassword"
-            android:autofillHints="password" />
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:layout_marginTop="32dp"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:text="@string/btnLogin" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

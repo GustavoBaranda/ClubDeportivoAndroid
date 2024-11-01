@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:backgroundTint="@color/white"
     tools:context=".MainActivity"
-    android:layout_gravity="center"
+    android:gravity="center"
     android:padding="24dp">
 
     <LinearLayout
@@ -22,8 +22,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="350px"
-            android:layout_height="360dp"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginBottom="90dp"
             app:srcCompat="@drawable/breakingcode"
             android:contentDescription="@string/logo" />
 
