@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="16dp"
-    app:cardBackgroundColor="#D0D0D0"
-    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="@color/secondary"
+    app:cardCornerRadius="14dp"
     app:cardElevation="8dp">
 
     <LinearLayout
@@ -26,15 +26,16 @@
                 android:id="@+id/tvDefaulter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textColor="@color/white_dim"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="Nombre" />
 
             <TextView
                 android:id="@+id/tvDNI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#B7282828"
+                android:textColor="@color/white_dim"
                 android:textSize="14sp"
                 tools:text="DNI" />
 
@@ -44,10 +45,10 @@
             android:id="@+id/btnPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#97148519"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:backgroundTint="@color/black"
             android:text="@string/pagar_btn"
+            android:textColor="@color/white_dim"
+            android:textSize="18sp"
             tools:text="Pagar" />
 
     </LinearLayout>

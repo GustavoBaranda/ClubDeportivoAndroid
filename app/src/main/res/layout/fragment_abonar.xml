@@ -15,32 +15,18 @@
         android:layout_height="wrap_content"
         android:text="@string/pagos_title" />
 
-           <EditText
-            android:id="@+id/etDNI"
-            style="@style/editText"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="6dp"
-            android:autofillHints="DNI"
-               android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_corner"
-            android:hint="@string/dni_hint"
-            android:inputType="number" />
-
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fbSearch"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:backgroundTint="@color/black"-->
-<!--            android:contentDescription="@string/buscar"-->
-<!--            android:src="@android:drawable/ic_menu_search"-->
-<!--            app:fabCustomSize="45dp"-->
-<!--            app:maxImageSize="30dp"-->
-<!--            app:tint="@color/white"-->
-
-<!--            />-->
-
+    <EditText
+        android:id="@+id/etDNI"
+        style="@style/editText"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="6dp"
+        android:autofillHints="DNI"
+        android:background="@drawable/rounded_corner"
+        android:hint="@string/dni_hint"
+        android:inputType="number" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,7 +56,8 @@
                 android:checked="true"
                 android:paddingHorizontal="10dp"
                 android:text="@string/efectivo"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:buttonTint="@color/accent"/>
 
             <RadioButton
                 android:id="@+id/rbTarjeta"
@@ -78,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
                 android:text="@string/tarjeta"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:buttonTint="@color/accent_text"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -160,12 +148,12 @@
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:text="@string/buscar_txt"
                 android:textAllCaps="true"
                 android:textColor="@color/accent_text"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginTop="3dp"
                 tools:text="Buscar cliente" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

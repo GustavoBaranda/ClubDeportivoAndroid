@@ -6,8 +6,4 @@ import androidx.lifecycle.ViewModel
 
 class VisualizarCarnetViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "A LABURAR LOS FRONTSSSSSSS"
-    }
-    val text: LiveData<String> = _text
 }

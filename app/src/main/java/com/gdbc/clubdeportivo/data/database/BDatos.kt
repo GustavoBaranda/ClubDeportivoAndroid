@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 private const val DB = "Clubdeportivo"
 
-class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
+class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_CLIENTE)
@@ -34,7 +34,6 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
     }
 
     companion object {
-//      implementar crear cliente
         private const val CREATE_TABLE_CLIENTE = "CREATE TABLE cliente" +
                 "(id_cliente INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT NOT NULL," +
@@ -55,7 +54,7 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
                 "(NULL, 'Elena', 'Sanchez', '49887766', 1, 'socio', '2024-03-10', 6)," +
                 "(NULL, 'Miguel', 'Fernandez', '66554433', 1, 'no socio', '2024-02-18', 7)," +
                 "(NULL, 'Marcelo', 'Sanchez', '36544738', 1, 'no socio', '2024-02-18', 8);"
-        //      implementar crear usuario
+
         private const val CREATE_TABLE_USUARIO = "CREATE TABLE usuario" +
                 "(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "alias TEXT NOT NULL UNIQUE," +
@@ -78,7 +77,7 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
                 "(NULL, 'cescobar', 'asda1234', 'empleado')," +
                 "(NULL, 'ebaba', 'meugenia', 'empleado')," +
                 "(NULL, 'gbaranda', 'jslover', 'empleado');"
-        //      implementar guardar y eliminar moroso
+
         private const val CREATE_TABLE_MOROSO = "CREATE TABLE moroso" +
                 "(id_moroso INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "id_cliente INTEGER NOT NULL," +
@@ -103,7 +102,7 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
                 "(NULL, 'Fútbol', 8500.00), " +
                 "(NULL, 'Gimnasio', 8500.75), " +
                 "(NULL, 'Spinning', 9100.00);"
-        //      implementar guardar, buscar ultima fecha de pago y verificar si es moroso
+
         private const val CREATE_TABLE_PAGO = "CREATE TABLE pago" +
                 "(id_pago INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "monto REAL NOT NULL CHECK (monto >= 0), " +
@@ -125,7 +124,8 @@ class BDatos(context: Context) : SQLiteOpenHelper(context, DB, null, 5) {
                 "(NULL, 30000.00, 'efectivo', 6, 'mensual', NULL, NULL, '2024-09-25'), " +
                 "(NULL, 11000.00, 'tarjeta', 7, 'diario', 2, 1, '2024-09-25'), " +
                 "(NULL, 8500.00, 'tarjeta', 8, 'diario', 3, 3, '2024-09-25');"
-        //      implementacion opcional
+
+        //      implementacion opcional a futuro
         private const val CREATE_TABLE_INSCRIPCION = "CREATE TABLE inscripcion" +
                 "(id_inscripto INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "id_cliente INTEGER NOT NULL," +

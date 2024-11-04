@@ -16,6 +16,11 @@ import com.gdbc.clubdeportivo.data.repository.UsuarioRepository
 
 class Login : AppCompatActivity() {
 
+    companion object{
+        const val USER_ID = "USER_ID"
+        const val USER_ROL = "USER_ROL"
+    }
+
     private lateinit var dbHelper: BDatos
     private lateinit var morosoRepository: MorosoRepository
     private lateinit var pagoRepository: PagoRepository
@@ -59,7 +64,8 @@ class Login : AppCompatActivity() {
 
             if (user != null) {
                 val intent = Intent(this, PanelPrincipal::class.java)
-                intent.putExtra("USER_ROLE", user.rol)
+                intent.putExtra(USER_ROL, user.rol)
+                intent.putExtra(USER_ID, user.idUsuario)
                 startActivity(intent)
                 finish()
             } else {
@@ -74,16 +80,6 @@ class Login : AppCompatActivity() {
             ).show()
         }
     }
-
-//    private fun login(user: String, pass: String) {
-//        if (user == "" && pass == "") {
-//            val intent = Intent(this, PanelPrincipal::class.java)
-//            startActivity(intent)
-//            finish()
-//        } else {
-//            Toast.makeText(this, "Usuario y/o Contraseña invalida", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
     override fun onDestroy() {
         super.onDestroy()

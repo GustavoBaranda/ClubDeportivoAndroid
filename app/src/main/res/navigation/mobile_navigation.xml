@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_ingresar_cliente" />
 
     <fragment
-        android:id="@+id/nav_finalizar_inscripcion"
-        android:name="com.gdbc.clubdeportivo.ui.finalizarinscripcion.FinalizarInscripcionFragment"
-        android:label="@string/menu_finalizar_inscripcion"
-        tools:layout="@layout/fragment_finalizar_inscripcion" />
+        android:id="@+id/nav_comprobante"
+        android:name="com.gdbc.clubdeportivo.ui.comprobante.ComprobanteFragment"
+        android:label="@string/menu_comprobante_pago"
+        tools:layout="@layout/fragment_comprobante" />
 
     <fragment
         android:id="@+id/nav_visualizar_carnet"
@@ -30,16 +30,16 @@
         tools:layout="@layout/fragment_visualizar_carnet" />
 
     <fragment
-        android:id="@+id/nav_incripcion_de_actividades"
-        android:name="com.gdbc.clubdeportivo.ui.inscripciondeactividades.IncripcionDeActividadesFragment"
-        android:label="@string/menu_Incripcion_de_actividades"
-        tools:layout="@layout/fragment_incripcion_de_actividades" />
-
-    <fragment
         android:id="@+id/nav_listar_cuotas_vencidas"
         android:name="com.gdbc.clubdeportivo.ui.listarcuotasvencidas.ListarCuotasVencidasFragment"
         android:label="@string/menu_listar_cuotas_vencidas"
         tools:layout="@layout/fragment_listar_cuotas_vencidas" />
+
+    <fragment
+        android:id="@+id/nav_incripcion_de_actividades"
+        android:name="com.gdbc.clubdeportivo.ui.inscripciondeactividades.IncripcionDeActividadesFragment"
+        android:label="@string/menu_Incripcion_de_actividades"
+        tools:layout="@layout/fragment_incripcion_de_actividades" />
 
     <fragment
         android:id="@+id/nav_abonar"

@@ -1,6 +1,7 @@
 package com.gdbc.clubdeportivo.data.repository
 
 import android.content.ContentValues
+import android.util.Log
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Moroso
 import com.gdbc.clubdeportivo.data.model.Pago
@@ -45,8 +46,8 @@ class MorosoRepository(private val dbHelper: BDatos) {
         val esMoroso = cursor.use {
             it.moveToFirst() && it.getInt(0) > 0
         }
-
         cursor.close()
+        db.close()
         return esMoroso
     }
 
@@ -54,12 +55,35 @@ class MorosoRepository(private val dbHelper: BDatos) {
         val db = dbHelper.writableDatabase
         val contenedor = ContentValues()
         contenedor.put("id_cliente", idCliente)
-        val response = db.insert("Moroso", null, contenedor)
-        return response != -1L
+
+        db.beginTransaction()
+        return try {
+            val response = db.insert("Moroso", null, contenedor)
+            if (response != -1L) {
+                db.setTransactionSuccessful()
+                true
+            } else {
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("dbase", "Error al agregar moroso: ${e.message}")
+            false
+        } finally {
+            db.endTransaction()
+        }
     }
 
+
+//    fun agregarMoroso(idCliente: Int): Boolean {
+//        val db = dbHelper.writableDatabase
+//        val contenedor = ContentValues()
+//        contenedor.put("id_cliente", idCliente)
+//        val response = db.insert("Moroso", null, contenedor)
+//        return response != -1L
+//    }
+
     fun agregarNuevosMorosos(pagoRepository: PagoRepository) {
-        val pagos = pagoRepository.pruebaBuscarUltimoPagoPorCliente().orEmpty()
+        val pagos = pagoRepository.buscarUltimoPagoPorCliente().orEmpty()
         val nuevosMorosos = mutableListOf<Pago>()
         pagos.forEach { p ->
             if (!esMoroso(p.idCliente)) {

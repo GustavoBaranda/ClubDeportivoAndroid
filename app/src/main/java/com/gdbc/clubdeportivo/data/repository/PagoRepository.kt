@@ -9,10 +9,7 @@ import java.time.LocalDate
 
 class PagoRepository(private val dbHelper: BDatos) {
 
-    private val clienteRepo = ClienteRepository(dbHelper)
-
     fun crearPago(pago: Pago): Long {
-
         val db = dbHelper.writableDatabase
         var result: Long = -1
         try {
@@ -36,35 +33,30 @@ class PagoRepository(private val dbHelper: BDatos) {
         return result
     }
 
-
-    fun buscarUltimoPago(dni: String): Pago? {
-        val cliente = clienteRepo.clientePorDni(dni) ?: return null
+    fun obtenerUltimoPago(idCliente: Int): Pago? {
         val db = dbHelper.readableDatabase
-        val query = "SELECT * FROM pago  ORDER BY fecha_pago DESC LIMIT 1"
-        var cursor: Cursor? = null
-        try {
-            cursor = db.rawQuery(query, arrayOf(cliente.idCliente.toString()))
-            if (cursor.moveToFirst()) {
-                return Pago(
-                    idPago = cursor.getInt(cursor.getColumnIndexOrThrow("id_pago")),
-                    monto = cursor.getDouble(cursor.getColumnIndexOrThrow("monto")),
-                    metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
-                    idCliente = cursor.getInt(cursor.getColumnIndexOrThrow("id_cliente")),
-                    tipoPago = cursor.getString(cursor.getColumnIndexOrThrow("tipo_pago")),
-                    idActividad = cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad")),
-                    cantCuotas = cursor.getInt(cursor.getColumnIndexOrThrow("cant_cuotas")),
-                    fechaPago = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_pago"))),
-                )
-            }
-            return null
-        } catch (e: Exception) {
-            return null
-        } finally {
-            cursor?.close()
+        val cursor = db.rawQuery(
+            "SELECT * FROM pago WHERE id_cliente = ? ORDER BY fecha_pago DESC LIMIT 1",
+            arrayOf(idCliente.toString())
+        )
+        var pago: Pago? = null
+        if (cursor.moveToFirst()) {
+
+            val idPago = cursor.getInt(cursor.getColumnIndexOrThrow("id_pago"))
+            val monto = cursor.getDouble(cursor.getColumnIndexOrThrow("monto"))
+            val metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago"))
+            val tipoPago = cursor.getString(cursor.getColumnIndexOrThrow("tipo_pago"))
+            val fechaPago =
+                LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fecha_pago")))
+
+            pago = Pago(idPago, monto, metodoPago, idCliente, tipoPago, null, null, fechaPago)
         }
+        cursor.close()
+        db.close()
+        return pago
     }
 
-    fun pruebaBuscarUltimoPagoPorCliente(): List<Pago>? {
+    fun buscarUltimoPagoPorCliente(): List<Pago>? {
         val db = dbHelper.readableDatabase
         val query = """
     SELECT p.*

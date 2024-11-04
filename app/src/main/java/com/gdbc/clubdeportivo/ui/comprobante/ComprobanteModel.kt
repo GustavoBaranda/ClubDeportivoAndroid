@@ -1,10 +1,10 @@
-package com.gdbc.clubdeportivo.ui.finalizarinscripcion
+package com.gdbc.clubdeportivo.ui.comprobante
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class FinalizarInscripcionModel : ViewModel() {
+class ComprobanteModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "Finalizar Inscripcion"

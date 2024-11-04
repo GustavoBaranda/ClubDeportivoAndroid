@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_ingresar_cliente"
-            android:title="@string/menu_inscripcion_cliente"/>
+            android:title="@string/menu_inscripcion_cliente" />
 
         <item
             android:id="@+id/nav_abonar"
@@ -15,17 +14,16 @@
             android:title="@string/menu_listar_cuotas_vencidas" />
 
         <item
+            android:id="@+id/nav_comprobante"
+            android:title="@string/menu_comprobante_pago" />
+
+        <item
             android:id="@+id/nav_visualizar_carnet"
             android:title="@string/menu_visualizar_carnet" />
 
         <item
-            android:id="@+id/nav_finalizar_inscripcion"
-            android:title="@string/menu_finalizar_inscripcion"/>
-
-        <item
             android:id="@+id/nav_incripcion_de_actividades"
             android:title="@string/menu_Incripcion_de_actividades" />
-
 
         <item
             android:id="@+id/nav_home"

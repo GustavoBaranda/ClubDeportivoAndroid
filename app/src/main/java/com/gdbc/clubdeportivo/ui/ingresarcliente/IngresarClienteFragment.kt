@@ -47,6 +47,7 @@ class IngresarClienteFragment : Fragment() {
         dbHelper = BDatos(requireContext())
         clienteRepository = ClienteRepository(dbHelper)
         usuarioRepository = UsuarioRepository(dbHelper)
+        morosoRepository = MorosoRepository(dbHelper)
     }
 
     private fun initListeners() {
@@ -68,14 +69,23 @@ class IngresarClienteFragment : Fragment() {
                 val usuario = crearUsuario()
                 val cliente = crearCliente()
 
-                usuarioRepository.crearUsuarioCliente(usuario, cliente)
-                morosoRepository.agregarMoroso(cliente.idCliente!!)
+                if (usuarioRepository.crearUsuarioCliente(usuario, cliente)) {
+                    cliente.idCliente?.let { id ->
+                        if (morosoRepository.agregarMoroso(id)) {
 
-                val bundle = Bundle().apply {
-                    putString(AbonarFragment.DNI, cliente.dni)
+                            val bundle = Bundle().apply {
+                                putString(AbonarFragment.DNI, cliente.dni)
+                            }
+                            findNavController().navigate(R.id.nav_abonar, bundle)
+                        } else {
+                            mostrarToast("No se pudo agregar el cliente a la tabla de morosos.")
+                        }
+                    } ?: run {
+                        mostrarToast("Error: idCliente es nulo.")
+                    }
+                } else {
+                    mostrarToast("Ocurrió un error inesperado al crear el usuario.")
                 }
-                findNavController().navigate(R.id.nav_abonar, bundle)
-
             }
         }
     }
@@ -91,8 +101,10 @@ class IngresarClienteFragment : Fragment() {
 
     private fun obtenerDatos(): Map<String, String> {
         return mapOf(
-            "nombre" to binding.etNombre.text.trim().toString(),
-            "apellido" to binding.etApellido.text.trim().toString(),
+            "nombre" to binding.etNombre.text.trim().toString()
+                .replaceFirstChar { c -> c.uppercase() },
+            "apellido" to binding.etApellido.text.trim().toString()
+                .replaceFirstChar { c -> c.uppercase() },
             "dni" to binding.etDni.text.trim().toString(),
             "alias" to binding.etAlias.text.trim().toString(),
             "contrasena" to binding.etContrasena.text.trim().toString()

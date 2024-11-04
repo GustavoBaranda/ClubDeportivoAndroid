@@ -1,6 +1,5 @@
 package com.gdbc.clubdeportivo.ui.abonar
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.gdbc.clubdeportivo.ComprobanteActivity
+import androidx.navigation.fragment.findNavController
 import com.gdbc.clubdeportivo.R
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
@@ -37,7 +36,7 @@ class AbonarFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var abonarViewModel: AbonarViewModel
-    private lateinit var dbHelper:BDatos
+    private lateinit var dbHelper: BDatos
     private lateinit var clienteRepository: ClienteRepository
     private lateinit var morosoRepository: MorosoRepository
     private lateinit var pagoRepository: PagoRepository
@@ -279,15 +278,12 @@ class AbonarFragment : Fragment() {
                     putDouble("monto", montoTexto.toDoubleOrNull() ?: 0.0)
                     putString("nombre", clienteActual?.nombre)
                     putString("apellido", clienteActual?.apellido)
-                    putString("cuota", cuota.uppercase())
+                    putString("dni",clienteActual?.dni)
+                    putString("cuota", cuota.replaceFirstChar { p -> p.uppercase() })
                     putString("pagoId", exito.toString())
                 }
                 limpiarDatos()
-
-                val intent = Intent(requireContext(), ComprobanteActivity::class.java).apply {
-                    putExtras(bundle)
-                }
-                startActivity(intent)
+                findNavController().navigate(R.id.nav_comprobante, bundle)
 
             } else {
                 mostrarToast("Error al realizar el pago")

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="22dp"
-    tools:context=".ui.visualizarcarnet.VisualizarCarnetFragment">
+    tools:context=".ui.comprobante.ComprobanteFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -27,11 +27,11 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/rounded_card"
+                android:background="@drawable/rounded_corner_background"
                 android:contentDescription="@string/descripcion"
-                android:padding="8dp"
+                android:padding="6dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/carnet"
+                android:src="@drawable/ic_payment"
                 app:layout_constraintBottom_toTopOf="@+id/linea1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageProfile" />
@@ -141,14 +141,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tvCuotaTipo" />
 
             <TextView
-                android:id="@+id/tvUltimoPago"
+                android:id="@+id/tvPago"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:text="@string/carnet_pago"
+                android:text="@string/fecha_pago"
                 android:textColor="@color/white_dim"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linea2" />
 
@@ -160,24 +159,61 @@
                 android:textColor="@color/white_dim"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUltimoPago"
+                app:layout_constraintTop_toBottomOf="@id/tvPago"
                 tools:text="10/09/2024" />
 
-            <ImageView
-                android:id="@+id/qrCodeImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/rounded_transparent"
-                android:clipToOutline="true"
-                android:contentDescription="@string/descripcion"
-                android:scaleType="centerCrop"
-                android:src="@drawable/qr"
+            <TextView
+                android:id="@+id/tvMontoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/monto"
+                android:textColor="@color/white_dim"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linea2" />
+
+            <TextView
+                android:id="@+id/tvMonto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/white_dim"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMontoTitle"
+                tools:text="$ 35000.00" />
+
+            <TextView
+                android:id="@+id/tvComprobante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white_dim"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvFechaPago"
+                app:layout_constraintTop_toBottomOf="@id/tvMonto"
+                tools:text="Comprobante nº 000134" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/rounded_transparent"
+                android:backgroundTint="@color/white"
+                android:backgroundTintMode="src_over"
+                android:clipToOutline="true"
+                android:contentDescription="@string/descripcion"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bar_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvComprobante"
                 tools:ignore="UnusedAttribute" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -195,12 +231,12 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnFinish"
+        android:id="@+id/btnCarnet"
         style="@style/button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="@string/carnet_btn"
+        android:text="@string/comprobante_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

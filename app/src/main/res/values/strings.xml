@@ -15,7 +15,7 @@
     <string name="inscribirActividad">Inscribir Actividad</string>
     <string name="menu_home">¿Quienes somos?</string>
     <string name="menu_inscripcion_cliente">Ingresar Cliente</string>
-    <string name="menu_finalizar_inscripcion">Finalizar Inscripción</string>
+    <string name="menu_comprobante_pago">Comprobante de Pago</string>
     <string name="menu_visualizar_carnet">Visualizar Carnet</string>
     <string name="menu_Incripcion_de_actividades">Inscripcion de Actividades</string>
     <string name="menu_listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
@@ -23,7 +23,7 @@
     <string name="inscripcion_de_actividades">Inscripción de Actividades</string>
     <string name="abonar">Abonar</string>
     <string name="ingresar_cliente">Ingresar Cliente</string>
-    <string name="finalizar_inscripcion">Finalizar Inscripcion</string>
+    <string name="comprobante_pago">Comprobante de Pago</string>
     <string name="listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="visualizar_carnet">Visualizar Carnet</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
@@ -33,6 +33,7 @@
     <string name="tituloAptoFisico">Apto Fisico</string>
     <string name="btn_ingresar">Registrar</string>
     <string name="registro_de_clientes">Registro de Clientes</string>
+    <string name="sin_morosos">Todos los clientes estan al dia.</string>
 
     <!--Ingresar Cliente-->
     <string name="inscripcion_title">Inscripción de Clientes</string>
@@ -73,12 +74,22 @@
     </string-array>
 
     <!--Comprobante-->
-    <string name="factura">Factura nº %1$s</string>
-    <string name="nombre_completo">Nombre: %1$s %2$s</string>
-    <string name="monto">Monto $ %1$.2f</string>
-    <string name="cuota">Cuota: %1$s</string>
-    <string name="fecha_pago">Fecha: %1$s</string>
+    <string name="comprobante">Comprobante nº %1$s</string>
+    <string name="nombre_completo">%1$s %2$s</string>
+    <string name="monto_abonado">$ %1$.2f</string>
+    <string name="cuota">%1$s</string>
+    <string name="fecha_pago">Fecha de Pago</string>
+    <string name="monto">Importe Abonado</string>
+    <string name="comprobante_btn">Ver Carnet</string>
 
+    <!--Carnet-->
+    <string name="carnet_txt">Carnet</string>
+    <string name="carnet_subtitle">Club Deportivo Breaking Code</string>
+    <string name="descripcion">descripcion</string>
+    <string name="carnet_nombre">Nombre Completo</string>
+    <string name="carnet_cuota">Pago</string>
+    <string name="carnet_pago">Ultimo Pago</string>
+    <string name="carnet_btn">Finalizar</string>
 
     <string name="ok">OK</string>
     <string name="si">Si</string>
@@ -93,7 +104,7 @@
     <string name="btnMenuAnterior">Menú Anterior</string>
     <string name="titulo_morosos">"Listado de Morosos"</string>
     <string name="volver">Volver</string>
-    <string name="dniAbonar">DNI</string>
+    <string name="dni_text">DNI</string>
     <string name="m_todo_de_pago">Método de Pago</string>
     <string name="efectivo">Efectivo</string>
     <string name="tarjeta">Tarjeta</string>

@@ -12,31 +12,35 @@ class UsuarioRepository(dbHelper: BDatos) {
     private val db = dbHelper
 
     fun crearUsuarioCliente(usuario: Usuario, cliente: Cliente): Boolean {
-
         val db = db.writableDatabase
 
         try {
-            //guardar el usuario
             db.beginTransaction()
-            val contenedor1 = ContentValues()
-            contenedor1.put("alias", usuario.alias)
-            contenedor1.put("contrasena", usuario.contrasena)
-            contenedor1.put("rol", usuario.rol)
+
+            //guardar el usuario
+            val contenedor1 = ContentValues().apply {
+                put("alias", usuario.alias)
+                put("contrasena", usuario.contrasena)
+                put("rol", usuario.rol)
+            }
             val usuarioId = db.insert("Usuario", null, contenedor1)
             if (usuarioId == -1L) return false
+
             //guardar el cliente
-            val contenedor2 = ContentValues()
-            contenedor2.put("nombre", cliente.nombre)
-            contenedor2.put("apellido", cliente.apellido)
-            contenedor2.put("dni", cliente.dni)
-            contenedor2.put("tiene_apto_fisico", cliente.tieneAptoFisico)
-            contenedor2.put("tipo_cliente", cliente.tipoCliente)
-            contenedor2.put("fecha_registro", cliente.fechaRegistro.toString())
-            contenedor2.put("id_usuario", usuarioId)
-            val resultado = db.insert("Cliente", null, contenedor2)
-            if (resultado == -1L) {
-                return false
+            val contenedor2 = ContentValues().apply {
+                put("nombre", cliente.nombre)
+                put("apellido", cliente.apellido)
+                put("dni", cliente.dni)
+                put("tiene_apto_fisico", cliente.tieneAptoFisico)
+                put("tipo_cliente", cliente.tipoCliente)
+                put("fecha_registro", cliente.fechaRegistro.toString())
+                put("id_usuario", usuarioId)
             }
+            val clienteId = db.insert("Cliente", null, contenedor2)
+            if (clienteId == -1L) return false
+
+            cliente.idCliente = clienteId.toInt()
+
             db.setTransactionSuccessful()
             return true
         } catch (e: SQLiteConstraintException) {

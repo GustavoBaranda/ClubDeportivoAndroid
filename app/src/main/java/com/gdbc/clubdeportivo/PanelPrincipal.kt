@@ -31,22 +31,28 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_panel_principal)
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_ingresar_cliente, R.id.nav_visualizar_carnet,
-                R.id.nav_finalizar_inscripcion, R.id.nav_incripcion_de_actividades,
+                R.id.nav_comprobante, R.id.nav_incripcion_de_actividades,
                 R.id.nav_listar_cuotas_vencidas, R.id.nav_abonar
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val userRole = intent.getStringExtra("USER_ROLE")
+        val userRole = intent.getStringExtra(Login.USER_ROL)
 
         val menu = navView.menu
-        if (userRole == "cliente") {
+
+        if (userRole == "empleado") {
+            menu.findItem(R.id.nav_visualizar_carnet).isVisible = false
+            menu.findItem(R.id.nav_comprobante).isVisible = false
+            menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
+        } else if (userRole == "cliente") {
             menu.findItem(R.id.nav_ingresar_cliente).isVisible = false
-            menu.findItem(R.id.nav_finalizar_inscripcion).isVisible = false
+            menu.findItem(R.id.nav_comprobante).isVisible = false
             menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
             menu.findItem(R.id.nav_listar_cuotas_vencidas).isVisible = false
             menu.findItem(R.id.nav_abonar).isVisible = false
@@ -61,20 +67,30 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val navController =
+            findNavController(R.id.nav_host_fragment_content_panel_principal)
         when (item.itemId) {
             R.id.nav_cerrar_sesion -> {
                 logout()
                 return true
             }
 
+            R.id.nav_visualizar_carnet -> {
+                val userId = intent.getIntExtra(Login.USER_ID, -1)
+                val userRol = intent.getStringExtra(Login.USER_ROL)
+                val bundle = Bundle().apply {
+                    putInt("USER_ID", userId)
+                    putString("USER_ROL", userRol)
+                }
+                navController.navigate(R.id.nav_visualizar_carnet, bundle)
+            }
+
             else -> {
-                val navController =
-                    findNavController(R.id.nav_host_fragment_content_panel_principal)
                 navController.navigate(item.itemId)
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-                return true
             }
         }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 
     private fun logout() {

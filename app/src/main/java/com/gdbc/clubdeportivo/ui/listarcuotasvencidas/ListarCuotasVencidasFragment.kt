@@ -83,13 +83,23 @@ class ListarCuotasVencidasFragment : Fragment() {
         recyclerView = binding.recyclerViewDefaulter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        morosoAdapter = MorosoAdapter(morosos) { dni ->
-            val bundle = Bundle().apply {
-                putString(AbonarFragment.DNI, dni)
+        if (morosos.isEmpty()) {
+            binding.ivNoMorososImage.visibility = View.VISIBLE
+            binding.tvNoMorosos.visibility = View.VISIBLE
+            binding.recyclerViewDefaulter.visibility = View.GONE
+        } else {
+            binding.ivNoMorososImage.visibility = View.GONE
+            binding.tvNoMorosos.visibility = View.GONE
+            binding.recyclerViewDefaulter.visibility = View.VISIBLE
+
+            morosoAdapter = MorosoAdapter(morosos) { dni ->
+                val bundle = Bundle().apply {
+                    putString(AbonarFragment.DNI, dni)
+                }
+                findNavController().navigate(R.id.nav_abonar, bundle)
             }
-            findNavController().navigate(R.id.nav_abonar, bundle)
+            recyclerView.adapter = morosoAdapter
         }
-        recyclerView.adapter = morosoAdapter
     }
 
     override fun onResume() {
