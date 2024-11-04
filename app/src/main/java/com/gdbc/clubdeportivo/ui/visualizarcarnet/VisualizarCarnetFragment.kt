@@ -70,7 +70,7 @@ class VisualizarCarnetFragment : Fragment() {
             Toast.makeText(
                 requireContext(),
                 "El cliente todavia no resgistro un pago",
-                Toast.LENGTH_SHORT
+                Toast.LENGTH_LONG
             ).show()
         }
     }
