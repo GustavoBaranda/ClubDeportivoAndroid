@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
-    android:background="@android:color/white"
+    android:background="@color/white"
     android:padding="24dp">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@android:color/white"
+        android:background="@color/white"
         android:padding="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="¿Quienes somos?\n"
             android:textSize="34sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:gravity="center"/>
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="Somos el grupo 2 Comisión D\nDAM\n"
             android:textSize="28sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:gravity="center"/>
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:text="Alejandro Abadi\nGustavo Baranda\nMa. Eugenia Bava\nCatriel Escobar\nMarcelo Galimberti"
             android:textSize="22sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:gravity="center"/>
     </LinearLayout>

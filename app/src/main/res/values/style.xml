@@ -6,4 +6,12 @@
         <item name="android:textColor">#FFFFFF</item> <!-- Color del texto -->
         <item name="android:textSize">18sp</item> <!-- Tamaño de la fuente -->
     </style>
+
+    <!-- Estilo para el Spinner -->
+    <style name="CustomSpinnerStyle">
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

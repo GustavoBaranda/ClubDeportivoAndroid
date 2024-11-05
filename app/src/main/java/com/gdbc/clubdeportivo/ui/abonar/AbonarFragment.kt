@@ -59,6 +59,12 @@ class AbonarFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toggleSpinnerState()
+    }
+
     private fun initDB() {
         dbHelper = BDatos(requireContext())
         clienteRepository = ClienteRepository(dbHelper)
@@ -163,8 +169,14 @@ class AbonarFragment : Fragment() {
             limpiarDatos()
         }
 
-        binding.rbEfectivo.setOnCheckedChangeListener { _, _ -> actualizarImporte() }
-        binding.rbTarjeta.setOnCheckedChangeListener { _, _ -> actualizarImporte() }
+        binding.rbEfectivo.setOnCheckedChangeListener { _, _ ->
+            actualizarImporte()
+            toggleSpinnerState()
+        }
+        binding.rbTarjeta.setOnCheckedChangeListener { _, _ ->
+            actualizarImporte()
+            toggleSpinnerState()
+        }
 
         binding.spCuotas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -185,6 +197,18 @@ class AbonarFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+
+    private fun toggleSpinnerState() {
+        if (binding.rbEfectivo.isChecked) {
+
+            binding.spCuotas.isEnabled = false
+            binding.spCuotas.setBackgroundResource(R.drawable.spinner_background)
+        } else if (binding.rbTarjeta.isChecked) {
+
+            binding.spCuotas.isEnabled = true
+            binding.spCuotas.setBackgroundResource(R.drawable.spinner_background)
         }
     }
 
@@ -278,7 +302,7 @@ class AbonarFragment : Fragment() {
                     putDouble("monto", montoTexto.toDoubleOrNull() ?: 0.0)
                     putString("nombre", clienteActual?.nombre)
                     putString("apellido", clienteActual?.apellido)
-                    putString("dni",clienteActual?.dni)
+                    putString("dni", clienteActual?.dni)
                     putString("cuota", cuota.replaceFirstChar { p -> p.uppercase() })
                     putString("pagoId", exito.toString())
                 }
