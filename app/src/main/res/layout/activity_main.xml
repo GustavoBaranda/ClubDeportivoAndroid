@@ -32,10 +32,9 @@
             android:id="@+id/btnIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/button"
             android:backgroundTint="@color/black"
             android:layout_marginTop="80dp"
-            android:padding="12dp"
-            android:textSize="20sp"
             android:text="@string/btnIngresar" />
 
     </LinearLayout>

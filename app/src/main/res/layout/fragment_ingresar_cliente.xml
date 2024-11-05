@@ -25,7 +25,7 @@
         android:autofillHints=""
         android:background="@drawable/rounded_corner"
         android:hint="@string/nombre_hint"
-        android:inputType="textCapWords"
+        android:inputType="textCapWords|textNoSuggestions"
         android:padding="12dp"
         android:textSize="20sp" />
 
@@ -37,7 +37,7 @@
         android:autofillHints=""
         android:background="@drawable/rounded_corner"
         android:hint="@string/apellido_hint"
-        android:inputType="textCapWords"
+        android:inputType="textCapWords|textNoSuggestions"
         android:padding="12dp"
         android:textSize="20sp" />
 
