@@ -1,5 +1,6 @@
 package com.gdbc.clubdeportivo.ui.listarcuotasvencidas
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,8 +49,10 @@ class ListarCuotasVencidasFragment : Fragment() {
 
     private fun initUI() {
         val searchView = binding.srcDefaulter
-        val plate = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
-        plate.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        searchView.post {
+            val plate = searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
+            plate.setBackgroundColor(Color.TRANSPARENT)
+        }
         binding.srcDefaulter.queryHint = "Buscar por nombre..."
     }
 
@@ -62,8 +65,10 @@ class ListarCuotasVencidasFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                morosoAdapter.filter(newText)
 
+                if (::morosoAdapter.isInitialized) {
+                    morosoAdapter.filter(newText)
+                }
                 if (newText.isNullOrEmpty()) {
                     binding.srcDefaulter.setQueryHint("Buscar por nombre...")
                 } else {
@@ -92,12 +97,16 @@ class ListarCuotasVencidasFragment : Fragment() {
             binding.tvNoMorosos.visibility = View.GONE
             binding.recyclerViewDefaulter.visibility = View.VISIBLE
 
-            morosoAdapter = MorosoAdapter(morosos) { dni ->
-                val bundle = Bundle().apply {
-                    putString(AbonarFragment.DNI, dni)
-                }
-                findNavController().navigate(R.id.nav_abonar, bundle)
-            }
+            morosoAdapter = MorosoAdapter(
+                morosos,
+                { dni ->
+                    val bundle = Bundle().apply {
+                        putString(AbonarFragment.DNI, dni)
+                    }
+                    findNavController().navigate(R.id.nav_abonar, bundle)
+                },
+                binding.tvNoResults
+            )
             recyclerView.adapter = morosoAdapter
         }
     }

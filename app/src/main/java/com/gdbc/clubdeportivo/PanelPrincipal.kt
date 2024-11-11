@@ -35,8 +35,7 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_ingresar_cliente, R.id.nav_visualizar_carnet,
-                R.id.nav_comprobante, R.id.nav_incripcion_de_actividades,
-                R.id.nav_listar_cuotas_vencidas, R.id.nav_abonar
+                R.id.nav_comprobante, R.id.nav_listar_cuotas_vencidas, R.id.nav_abonar
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -49,11 +48,9 @@ class PanelPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         if (userRole == "empleado") {
             menu.findItem(R.id.nav_visualizar_carnet).isVisible = false
             menu.findItem(R.id.nav_comprobante).isVisible = false
-            menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
         } else if (userRole == "cliente") {
             menu.findItem(R.id.nav_ingresar_cliente).isVisible = false
             menu.findItem(R.id.nav_comprobante).isVisible = false
-            menu.findItem(R.id.nav_incripcion_de_actividades).isVisible = false
             menu.findItem(R.id.nav_listar_cuotas_vencidas).isVisible = false
             menu.findItem(R.id.nav_abonar).isVisible = false
         }

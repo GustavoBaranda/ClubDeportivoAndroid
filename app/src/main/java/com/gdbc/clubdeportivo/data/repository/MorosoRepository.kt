@@ -73,15 +73,6 @@ class MorosoRepository(private val dbHelper: BDatos) {
         }
     }
 
-
-//    fun agregarMoroso(idCliente: Int): Boolean {
-//        val db = dbHelper.writableDatabase
-//        val contenedor = ContentValues()
-//        contenedor.put("id_cliente", idCliente)
-//        val response = db.insert("Moroso", null, contenedor)
-//        return response != -1L
-//    }
-
     fun agregarNuevosMorosos(pagoRepository: PagoRepository) {
         val pagos = pagoRepository.buscarUltimoPagoPorCliente().orEmpty()
         val nuevosMorosos = mutableListOf<Pago>()

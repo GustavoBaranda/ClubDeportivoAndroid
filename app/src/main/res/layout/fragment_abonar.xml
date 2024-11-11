@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/m_todo_de_pago"
+            android:text="@string/metodo_de_pago"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:paddingHorizontal="10dp"
-                android:text="@string/efectivo"
+                android:text="@string/radioEfectivo"
                 android:textSize="16sp"
                 app:buttonTint="@color/accent"/>
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
-                android:text="@string/tarjeta"
+                android:text="@string/radioTarjeta"
                 android:textSize="16sp"
                 app:buttonTint="@color/accent_text"/>
         </RadioGroup>
@@ -191,7 +191,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:text="@string/pagar_btn"
+            android:text="@string/btnPagar"
             android:visibility="gone" />
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

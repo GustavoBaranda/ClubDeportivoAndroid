@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
-            android:text="@string/pagar_btn"
+            android:text="@string/btnPagar"
             android:textColor="@color/white_dim"
             android:textSize="18sp"
             tools:text="Pagar" />
