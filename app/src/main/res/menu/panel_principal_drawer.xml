@@ -22,10 +22,6 @@
             android:title="@string/menu_visualizar_carnet" />
 
         <item
-            android:id="@+id/nav_incripcion_de_actividades"
-            android:title="@string/menu_Incripcion_de_actividades" />
-
-        <item
             android:id="@+id/nav_home"
             android:title="@string/menu_home" />
     </group>

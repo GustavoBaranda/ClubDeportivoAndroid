@@ -36,12 +36,6 @@
         tools:layout="@layout/fragment_listar_cuotas_vencidas" />
 
     <fragment
-        android:id="@+id/nav_incripcion_de_actividades"
-        android:name="com.gdbc.clubdeportivo.ui.inscripciondeactividades.IncripcionDeActividadesFragment"
-        android:label="@string/menu_Incripcion_de_actividades"
-        tools:layout="@layout/fragment_incripcion_de_actividades" />
-
-    <fragment
         android:id="@+id/nav_abonar"
         android:name="com.gdbc.clubdeportivo.ui.abonar.AbonarFragment"
         android:label="@string/menu_Abonar"

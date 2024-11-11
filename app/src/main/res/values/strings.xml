@@ -1,4 +1,5 @@
 <resources>
+    <!--Menu - Navegacion - Login-->
     <string name="app_name">Club deportivo</string>
     <string name="btnIngresar">Ingresar</string>
     <string name="btnLogin">Ingresar</string>
@@ -12,28 +13,21 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="inscribirActividad">Inscribir Actividad</string>
     <string name="menu_home">¿Quienes somos?</string>
     <string name="menu_inscripcion_cliente">Ingresar Cliente</string>
     <string name="menu_comprobante_pago">Comprobante de Pago</string>
     <string name="menu_visualizar_carnet">Visualizar Carnet</string>
-    <string name="menu_Incripcion_de_actividades">Inscripcion de Actividades</string>
     <string name="menu_listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="menu_Abonar">Abonar Cuota</string>
-    <string name="inscripcion_de_actividades">Inscripción de Actividades</string>
     <string name="abonar">Abonar</string>
     <string name="ingresar_cliente">Ingresar Cliente</string>
     <string name="comprobante_pago">Comprobante de Pago</string>
     <string name="listar_cuotas_vencidas">Listar Cuotas Vencidas</string>
     <string name="visualizar_carnet">Visualizar Carnet</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-    <string name="actividades_subtitle">Seleccion de Actividades</string>
-    <string name="cuotas_subtitle">Seleccion de Cuotas</string>
     <string name="titulo">Registro de Clientes</string>
-    <string name="tituloAptoFisico">Apto Fisico</string>
     <string name="btn_ingresar">Registrar</string>
     <string name="registro_de_clientes">Registro de Clientes</string>
-    <string name="sin_morosos">Todos los clientes estan al dia.</string>
 
     <!--Ingresar Cliente-->
     <string name="inscripcion_title">Inscripción de Clientes</string>
@@ -48,7 +42,11 @@
     <string name="siguiente_btn">Siguiente</string>
 
     <!--Abonar-->
+    <string name="pagos_title">Registro de Pagos</string>
     <string name="pago_hint">Seleccione un medio de pago</string>
+    <string name="actividades_subtitle">Seleccion de Actividades</string>
+    <string name="cuotas_subtitle">Seleccion de Cuotas</string>
+    <string name="tituloAptoFisico">Apto Fisico</string>
     <string name="pago_txt">Importe</string>
     <string name="buscar_txt">Buscar cliente</string>
     <string name="metodo_de_pago">Método de pago</string>
@@ -81,6 +79,7 @@
     <string name="fecha_pago">Fecha de Pago</string>
     <string name="monto">Importe Abonado</string>
     <string name="comprobante_btn">Ver Carnet</string>
+    <string name="dni_text">DNI</string>
 
     <!--Carnet-->
     <string name="carnet_txt">Carnet</string>
@@ -91,25 +90,10 @@
     <string name="carnet_pago">Ultimo Pago</string>
     <string name="carnet_btn">Finalizar</string>
 
-    <string name="ok">OK</string>
-    <string name="si">Si</string>
-    <string name="radioSocio">Descripcion Socio</string>
-    <string name="radioNoSocio">Descripcion No Socio</string>
-    <string name="descripcion_button">Descripción del botón para inscribir</string>
-    <string name="inscribir_actividad">Inscribir Actividad</string>
-    <string name="descripcion_dni">Campo para ingresar DNI</string>
-    <string name="titleFinalizarRegistroInscripcion">Finalizar Registro de Inscripción</string>
-    <string name="incribir_button">Inscribir</string>
-    <string name="stringActividades">Seleccioná la actividad</string>
-    <string name="btnMenuAnterior">Menú Anterior</string>
+    <!--Listar cuotas vencidas-->
     <string name="titulo_morosos">"Listado de Morosos"</string>
+    <string name="sin_morosos">Todos los clientes estan al dia.</string>
     <string name="volver">Volver</string>
-    <string name="dni_text">DNI</string>
-    <string name="m_todo_de_pago">Método de Pago</string>
-    <string name="efectivo">Efectivo</string>
-    <string name="tarjeta">Tarjeta</string>
-    <string name="selecci_n_de_actividades">Selección de Actividades</string>
-    <string name="pagar_btn">Pagar</string>
-    <string name="pagos_title">Registro de Pagos</string>
+    <string name="sin_resultados">La busqueda no arrojó ningún resultado.</string>
 
 </resources>

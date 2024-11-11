@@ -12,7 +12,8 @@ import com.gdbc.clubdeportivo.data.model.Moroso
 
 class MorosoAdapter(
     private val morosos: List<Moroso>,
-    private val onClick: (String) -> Unit
+    private val onClick: (String) -> Unit,
+    private val noResultsTextView: TextView
 ) : RecyclerView.Adapter<MorosoAdapter.MorosoViewHolder>() {
 
     private var morososFiltrados = morosos.toMutableList()
@@ -33,7 +34,17 @@ class MorosoAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun filter(query: String?) {
+
+        // Si la lista original está vacía, no hay nada que filtrar
+        if (morosos.isEmpty()) {
+            morososFiltrados.clear()
+            notifyDataSetChanged()
+            return
+        }
+        // Limpiar la lista filtrada antes de aplicar el filtro
         morososFiltrados.clear()
+
+        // Si la búsqueda está vacía, mostramos todos los morosos
         if (query.isNullOrEmpty()) {
             morososFiltrados.addAll(morosos)
         } else {
@@ -43,6 +54,13 @@ class MorosoAdapter(
             })
         }
         notifyDataSetChanged()
+
+        // Si la lista filtrada está vacía, mostramos el mensaje de "sin resultados"
+        if (morososFiltrados.isEmpty()) {
+            noResultsTextView.visibility = View.VISIBLE
+        } else {
+            noResultsTextView.visibility = View.GONE
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MorosoViewHolder {

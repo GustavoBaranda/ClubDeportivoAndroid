@@ -3,7 +3,6 @@ package com.gdbc.clubdeportivo.data.repository
 import android.database.Cursor
 import com.gdbc.clubdeportivo.data.database.BDatos
 import com.gdbc.clubdeportivo.data.model.Cliente
-import com.gdbc.clubdeportivo.data.util.ListadorDeClases
 import java.time.LocalDate
 
 class ClienteRepository(dbHelper: BDatos) {
@@ -57,39 +56,6 @@ class ClienteRepository(dbHelper: BDatos) {
             return null
         } catch (e: Exception) {
             println("Error durante la búsqueda del cliente: ${e.message}")
-            return null
-        } finally {
-            cursor?.close()
-            db.close()
-        }
-    }
-
-
-    fun clientes(): List<Cliente>? {
-        val db = db.readableDatabase
-        var cursor: Cursor? = null
-        try {
-            val query = "SELECT * FROM Cliente;"
-            cursor = db.rawQuery(query, null)
-            return ListadorDeClases.listarClientes(cursor)
-        } catch (e: Exception) {
-            println("Error durante el login: ${e.message}")
-            return null
-        } finally {
-            cursor?.close()
-            db.close()
-        }
-    }
-
-    fun clientes(tipoCliente: String): List<Cliente>? {
-        val db = db.readableDatabase
-        var cursor: Cursor? = null
-        try {
-            val query = "SELECT * FROM Cliente WHERE tipo_cliente = ?;"
-            cursor = db.rawQuery(query, arrayOf(tipoCliente))
-            return ListadorDeClases.listarClientes(cursor)
-        } catch (e: Exception) {
-            println("Error durante el login: ${e.message}")
             return null
         } finally {
             cursor?.close()

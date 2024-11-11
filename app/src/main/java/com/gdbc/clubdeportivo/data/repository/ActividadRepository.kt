@@ -1,100 +1,35 @@
 package com.gdbc.clubdeportivo.data.repository
 
-import android.content.ContentValues
-import android.database.Cursor
 import com.gdbc.clubdeportivo.data.database.BDatos
-import com.gdbc.clubdeportivo.data.model.Actividad
-import com.gdbc.clubdeportivo.data.model.Cliente
-import com.gdbc.clubdeportivo.data.model.Pago
-import com.gdbc.clubdeportivo.data.util.ListadorDeClases
 
-class ActividadRepository(private val dbHelper:BDatos) {
-		private val clienteRepo = ClienteRepository(dbHelper)
-	 	private val pagoRepo = PagoRepository(dbHelper)
+class ActividadRepository(private val dbHelper: BDatos) {
 
-	 fun listarActividades(): List<Actividad>? {
-			val db = dbHelper.readableDatabase
-			var cursor: Cursor? = null
-			val query = "SELECT * FROM Actividad;"
-			val listaActividades = mutableListOf<Actividad>();
-			try {
-				 cursor = db.rawQuery(query, null)
-				 return ListadorDeClases.listarActividades(cursor)
-			} catch (e: Exception) {
-				 return null
-			} finally {
-				 cursor?.close()
-			}
 
-	 }
+    fun obtenerPrecioPorNombre(nombre: String): Double? {
+        val db = dbHelper.readableDatabase
+        var precio: Double? = null
+        val cursor = db.rawQuery(
+            "SELECT precio_diario FROM actividad WHERE nombre_actividad = ?",
+            arrayOf(nombre)
+        )
+        if (cursor.moveToFirst()) {
+            precio = cursor.getDouble(cursor.getColumnIndexOrThrow("precio_diario"))
+        }
+        cursor.close()
+        return precio
+    }
 
-	fun obtenerPrecioPorNombre(nombre: String): Double? {
-		val db = dbHelper.readableDatabase
-		var precio: Double? = null
-		val cursor = db.rawQuery("SELECT precio_diario FROM actividad WHERE nombre_actividad = ?", arrayOf(nombre))
-		if (cursor.moveToFirst()) {
-			precio = cursor.getDouble(cursor.getColumnIndexOrThrow("precio_diario"))
-		}
-		cursor.close()
-		return precio
-	}
-
-	fun obtenerIdPorNombre(nombre: String): Int? {
-		val db = dbHelper.readableDatabase
-		var id: Int? = null
-		val cursor = db.rawQuery("SELECT id_actividad FROM actividad WHERE nombre_actividad = ?", arrayOf(nombre))
-		if (cursor.moveToFirst()) {
-			id = cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad"))
-		}
-		cursor.close()
-		return id
-	}
-
-	fun pagarIncribirActividad(pago: Pago): Pago? {
-			val db = dbHelper.writableDatabase
-			try {
-				 if (pagoRepo.crearPago(pago) < 0) return null
-				 val contenedor = ContentValues()
-				 contenedor.put("id_cliente", pago.idCliente)
-				 contenedor.put("id_actividad", pago.idActividad)
-				 val respInscripcion = db.insert("inscripcion", null, contenedor)
-				 if (respInscripcion != -1L) {
-						return pago
-				 } else {
-						return null
-				 }
-			} catch (e: Exception) {
-				 return null
-			} finally {
-				 db.close()
-			}
-	 }
-
-	 fun listarClientesPorActividad(idActividad:Int):List<Cliente>? {
-			val db = dbHelper.readableDatabase
-			var cursor:Cursor? = null
-			val query = "SELECT c.* FROM inscripcion i " +
-							"INNER JOIN Cliente c ON  i.id_cliente = c.id_cliente AND i.id_actividad = ?"
-			val listaClientes = mutableListOf<Cliente>()
-			try {
-						cursor = db.rawQuery(query, arrayOf(idActividad.toString()))
-				 		return ListadorDeClases.listarClientes(cursor)
-			}catch (e:Exception) {
-				 println("Exception al listar clientes por actividad: ${e.message}")
-				 return null
-			}
-	 }
-
-	 fun limpiarActividadesClientesNoSocios ():Boolean {
-			val db = dbHelper.writableDatabase
-			val filasEliminadas = db.delete(
-				 "inscripcion",
-				 "id_cliente IN (SELECT id_cliente FROM Cliente WHERE tipo_cliente = ?)",
-				 arrayOf("no socio")
-			)
-
-			db.close()
-			return filasEliminadas > 0
-	 }
-
+    fun obtenerIdPorNombre(nombre: String): Int? {
+        val db = dbHelper.readableDatabase
+        var id: Int? = null
+        val cursor = db.rawQuery(
+            "SELECT id_actividad FROM actividad WHERE nombre_actividad = ?",
+            arrayOf(nombre)
+        )
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(cursor.getColumnIndexOrThrow("id_actividad"))
+        }
+        cursor.close()
+        return id
+    }
 }
